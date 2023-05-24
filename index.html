@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | Interactive comments section</title>
+
+    <!-- reset.css ress -->
+    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css" />
+
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <main>
+      <ul id="comments">
+        <li id="comment1">
+          <div class="content">
+            <div class="score">
+              <button id="plusBtn">
+                <img src="images/icon-plus.svg" alt="plus" />
+              </button>
+              <div id="score">12</div>
+              <button id="minusBtn">
+                <img src="images/icon-minus.svg" alt="minus" />
+              </button>
+            </div>
+
+            <div class="user-headline">
+              <div class="user-name">
+                <img
+                  src="/images/avatars/image-amyrobson.webp"
+                  alt="amyrobson"
+                  class="avatars"
+                />
+                <div class="name">amyrobson</div>
+                <div class="date">1month ago</div>
+              </div>
+            </div>
+
+            <button class="icon-reply">
+              <div>
+                <img src="images/icon-reply.svg" alt="reply" /><span
+                  >Reply</span
+                >
+              </div>
+            </button>
+
+            <div class="text">
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Modi
+              expedita maxime odit. Unde animi laudantium nobis id est, atque
+              voluptate et impedit itaque ut esse nisi! Placeat consequuntur
+              voluptatibus minus.
+            </div>
+          </div>
+
+          <div class="add-comment1">
+            <img
+              src="images/avatars/image-juliusomo.webp"
+              alt="juliusomo"
+              class="avatars2"
+            />
+            <textarea
+              name="comment"
+              class="comment"
+              placeholder="Add a comment..."
+            ></textarea>
+            <button class="button">REPLY</button>
+          </div>
+        </li>
+
+        <li id="comment2">
+          <div class="content">
+            <div class="score">
+              <button id="plusBtn">
+                <img src="images/icon-plus.svg" alt="plus" />
+              </button>
+              <div id="score">12</div>
+              <button id="minusBtn">
+                <img src="images/icon-minus.svg" alt="minus" />
+              </button>
+            </div>
+
+            <div class="user-name">
+              <img
+                src="/images/avatars/image-maxblagun.webp"
+                alt="maxblagun"
+                class="avatars"
+              />
+              <div class="name">maxblagun</div>
+              <div class="date">2 weeks ago</div>
+            </div>
+
+            <button class="icon-reply">
+              <div>
+                <img src="images/icon-reply.svg" alt="reply" /><span
+                  >Reply</span
+                >
+              </div>
+            </button>
+
+            <p class="text">
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Modi
+              expedita maxime odit. Unde animi laudantium nobis id est, atque
+              voluptate et impedit itaque ut esse nisi!
+            </p>
+          </div>
+
+          <ul class="replies">
+            <li class="reply1">
+              <div class="content">
+                <div class="score">
+                  <button id="plusBtn">
+                    <img src="images/icon-plus.svg" alt="plus" />
+                  </button>
+                  <div id="score">12</div>
+                  <button id="minusBtn">
+                    <img src="images/icon-minus.svg" alt="minus" />
+                  </button>
+                </div>
+
+                <div class="user-name">
+                  <img
+                    src="/images/avatars/image-ramsesmiron.webp"
+                    alt="ramsesmiron"
+                    class="avatars"
+                  />
+                  <div class="name">ramsesmiron</div>
+                  <div class="date">1 week ago</div>
+                </div>
+
+                <button class="icon-reply">
+                  <div>
+                    <img src="images/icon-reply.svg" alt="reply" /><span
+                      >Reply</span
+                    >
+                  </div>
+                </button>
+
+                <p class="text">
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Modi
+                  expedita maxime odit. Unde animi laudantium nobis id est,
+                  atque voluptate et impedit itaque ut esse nisi!
+                </p>
+              </div>
+            </li>
+
+            <li class="reply2">
+              <div class="content">
+                <div class="score">
+                  <button id="plusBtn">
+                    <img src="images/icon-plus.svg" alt="plus" />
+                  </button>
+                  <div id="score">12</div>
+                  <button id="minusBtn">
+                    <img src="images/icon-minus.svg" alt="minus" />
+                  </button>
+                </div>
+
+                <div class="user-name">
+                  <img
+                    src="/images/avatars/image-ramsesmiron.webp"
+                    alt="ramsesmiron"
+                    class="avatars"
+                  />
+                  <div class="name">ramsesmiron</div>
+                  <div class="date">1 week ago</div>
+                </div>
+
+                <button class="icon-reply">
+                  <div>
+                    <img src="images/icon-reply.svg" alt="reply" /><span
+                      >Reply</span
+                    >
+                  </div>
+                </button>
+
+                <p class="text">
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Modi
+                  expedita maxime odit. Unde animi laudantium nobis id est,
+                  atque voluptate et impedit itaque ut esse nisi!
+                </p>
+              </div>
+            </li>
+            <li class="reply"></li>
+            <li class="reply"></li>
+            <li class="reply"></li>
+            <li class="reply"></li>
+
+            <li class="add-comment2">
+              <img
+                src="images/avatars/image-juliusomo.webp"
+                alt="juliusomo"
+                class="avatars2"
+              />
+              <textarea
+                name="reply"
+                class="comment"
+                placeholder="Add a comment..."
+              ></textarea>
+              <button class="button">REPLY</button>
+            </li>
+
+            <li class="edit-reply-content">
+              <div class="score">
+                <button id="plusBtn">
+                  <img src="images/icon-plus.svg" alt="plus" />
+                </button>
+                <div id="score">12</div>
+                <button id="minusBtn">
+                  <img src="images/icon-minus.svg" alt="minus" />
+                </button>
+              </div>
+
+              <div class="user-name">
+                <img
+                  src="/images/avatars/image-juliusomo.webp"
+                  alt="juliusomo"
+                  class="avatars"
+                />
+                <div class="name">juliusomo</div>
+                <div class="you">you</div>
+                <div class="date">2 days ago</div>
+              </div>
+
+              <div class="delete-edit-icon">
+                <button>
+                  <div class="icon-delete">
+                    <img src="images/icon-delete.svg" alt="reply" /><span
+                      >Delete</span
+                    >
+                  </div>
+                </button>
+                <button>
+                  <div class="icon-edit">
+                    <img src="images/icon-edit.svg" alt="reply" /><span
+                      >Edit</span
+                    >
+                  </div>
+                </button>
+              </div>
+              <textarea name="comment" class="edit-textarea"></textarea>
+
+              <div class="update-button">
+                <button class="button">UPDATE</button>
+              </div>
+            </li>
+          </ul>
+
+          <section class="add-comment3">
+            <img
+              src="images/avatars/image-juliusomo.webp"
+              alt="juliusomo"
+              class="avatars2"
+            />
+            <textarea
+              name="comment"
+              class="comment"
+              placeholder="Add a comment..."
+            ></textarea>
+            <button class="button">SEND</button>
+          </section>
+        </li>
+      </ul>
+    </main>
+    <script src="index.js"></script>
+  </body>
+</html>

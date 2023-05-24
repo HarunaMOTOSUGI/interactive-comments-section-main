@@ -1,0 +1,420 @@
+@charset "UTF-8";
+
+html {
+  font-size: 100%;
+}
+
+#comment1 {
+  margin-top: 20px;
+}
+
+#comment2 {
+  margin-top: 20px;
+}
+
+.avatars {
+  width: 30px;
+}
+
+.avatars2 {
+  width: 40px;
+  height: 40px;
+}
+
+body {
+  font-family: "Rubik", sans-serif;
+  font-size: 1rem;
+  min-height: 100vh;
+  background-color: hsl(228, 33%, 97%);
+  margin-bottom: 20px;
+}
+
+main {
+  margin: 0 auto;
+  width: 700px;
+}
+
+li {
+  list-style: none;
+}
+
+ul {
+  padding: 0;
+}
+
+.button {
+  background-color: hsl(238, 40%, 52%);
+  color: white;
+  width: 80px;
+  height: 40px;
+  padding: 0%;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.button:hover {
+  opacity: 0.7;
+}
+
+.icon-reply:hover {
+  opacity: 0.7;
+}
+
+.add-comment1,
+.add-comment2,
+.add-comment3 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-grow: 1;
+  background-color: hsl(0, 0%, 100%);
+  max-width: 100%;
+  margin: 0px auto;
+  padding: 20px;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.content {
+  display: grid;
+  grid-template:
+    "score user-name reply"
+    "score text text";
+  gap: 1rem;
+  background-color: hsl(0, 0%, 100%);
+  max-width: 100%;
+  margin: 0px auto;
+  padding: 20px;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.edit-reply-content {
+  background-color: hsl(0, 0%, 100%);
+  max-width: 100%;
+  margin: 20px auto 0 auto;
+  padding: 20px;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.add-comment1,
+.add-comment2,
+.add-comment3 {
+  align-items: flex-start;
+}
+
+.add-comment1,
+.add-comment2 {
+  margin-top: 8px;
+}
+
+.add-comment3 {
+  margin-top: 20px;
+}
+
+.score {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 30px;
+  height: 90px;
+  margin: 0% 5px;
+  padding: 5px;
+  background-color: hsl(223, 19%, 93%);
+  border-radius: 10%;
+  grid-area: score;
+}
+
+#score {
+  color: hsl(238, 40%, 52%);
+  font-weight: 500;
+}
+
+.plusBtn .minusBtn {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+#plusBtn:hover,
+#minusBtn:hover {
+  filter: brightness(70%);
+}
+
+.user-name {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 60%;
+  grid-area: user-name;
+  align-items: center;
+}
+
+.name {
+  overflow-wrap: break-word;
+  margin: 0 10px;
+  font-weight: 700;
+}
+
+.date {
+  margin: 0 10px;
+  white-space: nowrap;
+  font-weight: 400;
+}
+
+.icon-reply {
+  color: hsl(238, 40%, 52%);
+  margin: auto 0 auto auto;
+  grid-area: reply;
+  font-weight: 500;
+}
+
+.icon-reply span {
+  margin-left: 8px;
+}
+
+.delete-edit-icon {
+  display: flex;
+  margin-top: 8px;
+  margin-bottom: auto;
+  margin-left: auto;
+  grid-area: delete-edit;
+  font-weight: 500;
+}
+
+.delete-edit-icon span {
+  margin-left: 8px;
+}
+
+.icon-edit:hover {
+  opacity: 0.7;
+}
+.icon-delete:hover {
+  opacity: 0.7;
+}
+
+.icon-delete {
+  margin-left: 16px;
+  color: hsl(358, 79%, 66%);
+}
+
+.icon-edit {
+  margin-left: 16px;
+  color: hsl(238, 40%, 52%);
+}
+
+.userText {
+  flex: 1;
+  max-width: 100%;
+  margin: 0 0 0 0.5rem;
+}
+
+.update-button {
+  display: flex;
+  flex-direction: row-reverse;
+  margin-left: auto;
+  grid-area: update;
+}
+
+/* リプライの線 */
+.replies {
+  margin-left: 25px;
+  padding-left: 25px;
+  border-left: solid 1px hsl(223, 19%, 93%);
+}
+/* ------------ */
+
+
+.reply1,
+.reply2 {
+  margin-top: 20px;
+}
+
+.score-edit1 {
+  display: flex;
+  min-width: 100%;
+}
+
+.edit1 {
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  max-width: 100%;
+}
+
+.edit-reply-content {
+  display: grid;
+  grid-template:
+    "score user-name delete-edit"
+    "score edit-textarea edit-textarea"
+    "score . update";
+  grid-template-columns: 0.5fr 9fr 5fr;
+  gap: 1rem;
+  background-color: hsl(0, 0%, 100%);
+  background-color: hsl(0, 0%, 100%);
+  max-width: 100%;
+  margin: 20px auto 0 auto;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+#editReplyText {
+  display: flex;
+  background-color: hsl(0, 0%, 100%);
+  width: 80%;
+  margin: 5% auto;
+}
+
+.user {
+  margin: 2%;
+}
+
+.icon {
+  margin: 1%;
+}
+
+.text {
+  max-width: 100%;
+  grid-area: text;
+}
+
+.you {
+  background-color: hsl(238, 40%, 52%);
+  color: white;
+  font-size: 13px;
+  border-radius: 2px;
+  margin: 0 10px;
+  padding: 2px 3px;
+}
+
+textarea {
+  flex: 1;
+  width: 100%;
+  height: 100px;
+  border: 1px hsl(0, 0%, 0%) solid;
+  border-radius: 5px;
+  margin: 0 3%;
+  padding: 2% 3%;
+}
+
+.edit-textarea {
+  margin: 0;
+  grid-area: edit-textarea;
+}
+
+/* モバイル版
+----------------------------------------- */
+
+@media (max-width: 600px) {
+  main {
+    width: 300px;
+    font-size: smaller;
+  }
+
+  .avatars2 {
+    width: 30px;
+    height: 30px;
+    margin: auto 0;
+    grid-area: avatars2;
+  }
+
+  .icon-reply {
+    grid-area: reply;
+    margin-left: auto;
+  }
+
+  .score {
+    flex-direction: row;
+    width: 80px;
+    height: 30px;
+    margin: auto 0;
+  }
+
+  #score {
+    margin: auto;
+  }
+
+  .score img {
+    display: block;
+    margin: auto;
+  }
+
+  .content {
+    grid-template:
+      "user-name user-name"
+      "text text"
+      "score reply";
+    grid-template-columns: 50% 50%;
+    width: 100%;
+    grid-column-gap: 0rem;
+    padding: 10px;
+  }
+
+  .text {
+    width: 100%;
+  }
+
+  .comment {
+    grid-area: comment;
+    max-width: 100%;
+    margin: 0;
+  }
+
+  .add-comment1,
+  .add-comment2,
+  .add-comment3 {
+    display: grid;
+    grid-template:
+      "comment comment"
+      "avatars2 button";
+    grid-template-columns: 50% 50%;
+    row-gap: 1rem;
+    padding: 10px;
+  }
+
+  .replies {
+    margin-left: 0;
+    padding-left: 5%;
+  }
+
+  .edit-reply-content {
+    padding: 10px;
+    grid-template:
+      "user-name user-name"
+      "edit-textarea edit-textarea"
+      "score delete-edit-icon"
+      ". update-button";
+    grid-template-columns: 50% 50%;
+    column-gap: 0rem;
+  }
+
+  .edit-textarea {
+    grid-area: edit-textarea;
+  }
+
+  .delete-edit-icon {
+    grid-area: delete-edit-icon;
+    margin: auto;
+  }
+
+  .delete-edit-icon img {
+    width: 10px;
+  }
+
+  .icon-delete,
+  .icon-edit {
+    margin: 0 0.5rem;
+    white-space: nowrap;
+  }
+
+  .update-button {
+    grid-area: update-button;
+  }
+
+  .button {
+    grid-area: button;
+    margin-left: auto;
+  }
+
+  /* ----------------------------------------- */
+}
