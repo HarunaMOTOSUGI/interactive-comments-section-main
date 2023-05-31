@@ -31,8 +31,27 @@ fetch("data.json")
     const text = document.querySelector('.text');
     text.textContent = data.comments[0].content;
 
-    const score = document.querySelector('.scorenun');
-    score.textContent = data.comments[0].score;
+    const score = document.querySelector('.scorenun'); //<div class="scorenun">11</div>
+    score.textContent = data.comments[0].score; //score.textContent=12
+
+
+    // スコアボタン
+
+    let plusbutton = document.querySelector("#comment1 > div.content > div.score > button.plusBtn");
+    let minusbutton = document.querySelector("#comment1 > div.content > div.score > button.minusBtn");
+
+    plusbutton.addEventListener("click", function () {
+      if(score.textContent < data.comments[0].score+1) {
+        score.textContent++;
+      }
+    });
+
+    minusbutton.addEventListener("click", function () {
+      if( score.textContent > data.comments[0].score-1) {
+        score.textContent--;
+      }
+    });
+
 
 // coment1 > add-comment1
     const avatarJ = document.querySelectorAll('.avatars2');
@@ -57,6 +76,23 @@ fetch("data.json")
     const scoreM = document.querySelector('#comment2 .content .scorenun')
     scoreM.textContent = data.comments[1].score
 
+        // スコアボタン
+    plusbutton = document.querySelector("#comment2 > div > div.score > button.plusBtn");
+    minusbutton = document.querySelector("#comment2 > div > div.score > button.minusBtn");
+
+
+    plusbutton.addEventListener("click", function () {
+      if(scoreM.textContent < data.comments[1].score+1) {
+        scoreM.textContent++;
+      }
+    });
+
+    minusbutton.addEventListener("click", function () {
+      if( scoreM.textContent > data.comments[1].score-1) {
+        scoreM.textContent--;
+      }
+    });
+
    
   // replies > reply1
     const avatarR = document.querySelector('#comment2 .reply1 .avatars')
@@ -77,6 +113,23 @@ fetch("data.json")
     const scoreR = document.querySelector('#comment2 .reply1 .content .scorenun')
     scoreR.textContent = data.comments[1].replies[0].score
 
+    // スコアボタン
+    plusbutton = document.querySelector("#comment2 > ul > li.reply1 > div > div.score > button.plusBtn")
+    minusbutton = document.querySelector("#comment2 > ul > li.reply1 > div > div.score > button.minusBtn")
+
+
+    plusbutton.addEventListener("click", function () {
+      if(scoreR.textContent < data.comments[1].replies[0].score+1) {
+        scoreR.textContent++;
+      }
+    });
+
+    minusbutton.addEventListener("click", function () {
+      if( scoreR.textContent > data.comments[1].replies[0].score-1) {
+        scoreR.textContent--;
+      }
+    });
+
     // replies > add-comment2
 
     // replies > edit-reply-content
@@ -93,33 +146,22 @@ fetch("data.json")
     const textJ = document.querySelector("#comment2 > ul > li.edit-reply-content > textarea")
     textJ.textContent = data.comments[1].replies[1].content
 
-    // currentUserName.forEach(function(currentUserName) {
-    // currentUserName.textContent = data.currentUser.username
-    // });
-
-    // const  = document.querySelectorAll('.currentUserDate');
+    // スコアボタン
+    plusbutton = document.querySelector("#comment2 > ul > li.edit-reply-content > div.score > button.plusBtn")
+    minusbutton = document.querySelector("#comment2 > ul > li.edit-reply-content > div.score > button.minusBtn")
 
 
-    // const plusbutton = document.querySelector("#comment1 > div.content > div.score > button.plusBtn");
-    // const minusbutton = document.querySelector("#comment1 > div.content > div.score > button.minusBtn");
+    plusbutton.addEventListener("click", function () {
+      if(scoreJ.textContent < data.comments[1].replies[1].score+1) {
+        scoreJ.textContent++;
+      }
+    });
 
-    // let scorenun = parseInt(score.textContent);
-    // console.log(score.textContent);
-
-    // plusbutton.addEventListener("click", function () {
-    //   if(score.textContent < score+1) {
-    //   score.textContent = scorenun++;
-    //   // console.log(score.textContent++);
-    //   }
-    // });
-
-    // minusbutton.addEventListener("click", function () {
-    //   // if(score.textContent > scorenun-1) {
-    //   score.textContent = scorenun--;
-    //   console.log('クリック');
-    //   // }
-    // });
-
+    minusbutton.addEventListener("click", function () {
+      if( scoreJ.textContent > data.comments[1].replies[1].score-1) {
+        scoreJ.textContent--;
+      }
+    });
 
 
 
@@ -149,12 +191,3 @@ fetch("data.json")
 
 //     return li;
 // }
-
-
-
-
-
-
-// minusbutton.addEventListener("crick", function () {
-//   score.vale--;
-// });

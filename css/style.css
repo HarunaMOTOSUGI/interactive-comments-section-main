@@ -27,6 +27,7 @@ body {
   min-height: 100vh;
   background-color: hsl(228, 33%, 97%);
   margin-bottom: 20px;
+  line-height: 1.5rem;
 }
 
 main {
@@ -160,6 +161,7 @@ ul {
   margin: 0 10px;
   white-space: nowrap;
   font-weight: 400;
+  color: hsl(211, 10%, 45%);
 }
 
 .icon-reply {
@@ -230,9 +232,8 @@ ul {
   margin-top: 20px;
 }
 
-.replyingTo {
-  color: hsl(238, 40%, 52%);
-}
+
+
 
 
 .score-edit1 {
@@ -284,9 +285,10 @@ ul {
   color: hsl(211, 10%, 45%);
 }
 
+.at,
 .replyingTo {
   color: hsl(238, 40%, 52%);
-  font-weight: 500;
+  font-weight: 700;
 }
 
 .you {
