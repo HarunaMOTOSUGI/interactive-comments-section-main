@@ -315,6 +315,10 @@ textarea {
   grid-area: edit-textarea;
 }
 
+.active {
+  display: block;
+}
+
 /* モバイル版
 ----------------------------------------- */
 
