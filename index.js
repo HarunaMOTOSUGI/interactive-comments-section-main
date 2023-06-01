@@ -80,13 +80,13 @@ fetch("data.json")
         const addCommentBox = document.createElement("div");
         addCommentBox.className = "add-comment1";
 
-        const addCommentButton = document.createElement("button");
-        addCommentButton.className = "button";
-        addCommentButton.textContent = "REPLY";
+        const addReplyButton = document.createElement("button");
+        addReplyButton.className = "button";
+        addReplyButton.textContent = "REPLY";
 
         addCommentBox.appendChild(avatars2);
         addCommentBox.appendChild(newComment);
-        addCommentBox.appendChild(addCommentButton);
+        addCommentBox.appendChild(addReplyButton);
 
         const commentList = document.querySelector("#comment1");
         commentList.appendChild(addCommentBox);
@@ -151,13 +151,13 @@ fetch("data.json")
         const addCommentBox = document.createElement("div");
         addCommentBox.className = "add-comment1";
 
-        const addCommentButton = document.createElement("button");
-        addCommentButton.className = "button";
-        addCommentButton.textContent = "REPLY";
+        const addReplyButton = document.createElement("button");
+        addReplyButton.className = "button";
+        addReplyButton.textContent = "REPLY";
 
         addCommentBox.appendChild(avatars2);
         addCommentBox.appendChild(newComment);
-        addCommentBox.appendChild(addCommentButton);
+        addCommentBox.appendChild(addReplyButton);
 
         const replies = document.querySelector("#comment2 > ul");
 
@@ -229,13 +229,13 @@ fetch("data.json")
         const addCommentBox = document.createElement("div");
         addCommentBox.className = "add-comment1";
 
-        const addCommentButton = document.createElement("button");
-        addCommentButton.className = "button";
-        addCommentButton.textContent = "REPLY";
+        const addReplyButton = document.createElement("button");
+        addReplyButton.className = "button";
+        addReplyButton.textContent = "REPLY";
 
         addCommentBox.appendChild(avatars2);
         addCommentBox.appendChild(newComment);
-        addCommentBox.appendChild(addCommentButton);
+        addCommentBox.appendChild(addReplyButton);
 
         const reply1 = document.querySelector(".reply1");
 
@@ -299,6 +299,7 @@ fetch("data.json")
   newComment.placeholder = "Add a comment...";
   newComment.className = "comment";
 
+
   const addCommentBox = document.createElement("div");
   addCommentBox.className = "add-comment1";
 
@@ -314,6 +315,174 @@ fetch("data.json")
   const comments = document.querySelector("#comments");
 
   comments.after(addCommentBox);
+
+
+// 投稿されたボックス
+// const scorenun = document.createElement("div");
+
+
+
+
+
+// SENDボタン押下でコメント投稿
+
+  addCommentButton.addEventListener("click",function () {
+
+    console.log("hakutyann");
+
+    const content = document.createElement("div")
+    content.className = "content"
+
+    //スコアボタン
+    const scorenun = document.createElement("div")
+    scorenun.className = "scorenun"
+    scorenun.textContent = 0 //データは仮
+
+    const score = document.createElement("div")
+    score.className = "score"
+
+    const plusBtnImg = document.createElement("img")
+    plusBtnImg.src = "images/icon-plus.svg"
+    plusBtnImg.alt = "plus"
+  
+    const plusbutton = document.createElement("button")
+    plusbutton.className = "plusBtn"
+
+    plusbutton.appendChild(plusBtnImg)
+
+    const minusBtnImg = document.createElement("img")
+    minusBtnImg.src = "images/icon-minus.svg"
+    minusBtnImg.alt = "minus"
+
+    const minusbutton = document.createElement("button")
+    minusbutton.className = "minusBtn"
+
+    minusbutton.appendChild(minusBtnImg)
+
+    score.appendChild(plusbutton)
+    score.appendChild(scorenun)
+    score.appendChild(minusbutton)
+
+
+    //　user-headline
+
+      //user-name
+      const myAvatar = document.createElement("img");
+      myAvatar.src = data.currentUser.image.webp;
+      myAvatar.alt = data.currentUser.username;
+      myAvatar.className = "avatars";
+
+      const name = document.createElement("div")
+      name.textContent = data.currentUser.username
+      name.className = "name"
+
+      const you = document.createElement("div")
+      you.textContent = "you"
+      you.className = "you"
+
+      const date = document.createElement("div")
+      date.textContent = new Date();
+      date.className = "date"
+
+      
+
+      const userName = document.createElement("div")
+      userName.className = "user-name"
+
+      userName.appendChild(myAvatar)
+      userName.appendChild(name)
+      userName.appendChild(you)
+      userName.appendChild(date)
+
+    
+
+      // deleteicon
+      const deleteImg = document.createElement("img")
+      deleteImg.src = "images/icon-delete.svg"
+      deleteImg.alt = "delete"
+
+      const textDelete = document.createElement("span")
+      textDelete.textContent ="Delete"
+
+
+      const iconDelete = document.createElement("div")
+      iconDelete.className = "icon-delete"
+
+      iconDelete.appendChild(deleteImg)
+      iconDelete.appendChild(textDelete)
+
+      const iconDeleteBtn = document.createElement("button")
+      
+      iconDeleteBtn.appendChild(iconDelete)
+
+      // edit-icon
+
+      const editImg = document.createElement("img")
+      editImg.src = "images/icon-edit.svg"
+      editImg.alt = "edit"
+
+      const textEdit = document.createElement("span")
+      textEdit.textContent ="Edit"
+
+
+      const iconEdit = document.createElement("div")
+      iconEdit.className = "icon-edit"
+
+      iconEdit.appendChild(editImg)
+      iconEdit.appendChild(textEdit)
+
+      const iconEditBtn = document.createElement("button")
+      
+      iconEditBtn.appendChild(iconEdit)
+
+      const deleteeditIcon = document.createElement("div")
+      deleteeditIcon.className = "delete-edit-icon"
+
+      deleteeditIcon.appendChild(iconDelete)
+      deleteeditIcon.appendChild(iconEdit)
+
+      // text
+      const text = document.createElement("div")
+      text.textContent = newComment.value
+      text.className = "text"
+
+      function checkText() {
+
+        if(text.length === 0) {
+            alert('文字が入力されていません！');
+            return false;
+        }
+      }
+
+
+
+
+
+
+
+
+    content.appendChild(score)
+    content.appendChild(userName)
+    content.appendChild(deleteeditIcon)
+    content.appendChild(text)
+
+    const comment1 = document.createElement("div")
+    comment1.id = "comment1"
+
+
+
+    comment1.appendChild(content)
+    
+    comments.appendChild(comment1)
+
+
+
+
+
+  })
+
+
+
 
 })
 
