@@ -552,7 +552,7 @@ fetch("data.json")
         avatars2.src = data.currentUser.image.webp;
         avatars2.alt = data.currentUser.username;
         avatars2.className = "avatars2";
-        
+
         const addReplyBox = document.createElement("div");
         addReplyBox.className = "add-comment1";
 
@@ -687,7 +687,7 @@ fetch("data.json")
   
         // text
         const text = document.createElement("div")
-        text.textContent = newReply2.value
+        text.textContent = newReply3.value
         text.className = "text"
   
     
@@ -712,8 +712,6 @@ fetch("data.json")
 
   
     })
-
-
 
     //-------------------------------------------------------------
 
@@ -760,6 +758,9 @@ fetch("data.json")
     });
 
   //-----------------------------------------------------------------
+
+  //リプライ編集
+  
 
   // コメント追加ボックス
 
@@ -948,6 +949,45 @@ fetch("data.json")
   })
 
   //-------------------------------------------------
+
+//モーダル
+
+const deleteBtn = document.querySelector("#comment2 > ul > li.edit-reply-content > div.delete-edit-icon > button:nth-child(1) > div")
+const modal = document.getElementById('easyModal');
+const buttonClose = document.getElementsByClassName('modalClose')[0];
+const modalDeleteBtn = document.querySelector(".delete")
+
+// Deleteボタンがクリックされた時
+deleteBtn.addEventListener('click', modalOpen);
+function modalOpen() {
+  modal.style.display = 'block';
+}
+
+// モーダルコンテンツ以外がクリックされた時
+addEventListener('click', outsideClose);
+function outsideClose(e) {
+  if (e.target == modal) {
+    modal.style.display = 'none';
+  }
+}
+
+// NO,CANCELがクリックされた時
+buttonClose.addEventListener('click', modalClose);
+function modalClose() {
+  modal.style.display = 'none';
+}
+
+modalDeleteBtn.addEventListener("click",function () {
+  const editReply = document.querySelector(".edit-reply-content")
+  editReply.remove()
+  modal.style.display = 'none';
+
+  
+})
+
+//------------------------------------------------------
+
+
 
 
 
