@@ -534,6 +534,16 @@ fetch("data.json")
     //<li class="reply1">内のReplyボタン押下でadd-comment1出現
 
     replybutton = document.querySelector("#comment2 > ul > li.reply1 > div > button > div")
+    
+    const addReplyButton3 = document.createElement("button");
+    addReplyButton3.className = "button";
+    addReplyButton3.textContent = "REPLY";
+
+    const newReply3 = document.createElement("textarea");
+    newReply3.name = "comment";
+    newReply3.placeholder = "Add a comment...";
+    newReply3.className = "comment";
+
 
     replybutton.addEventListener(
       "click",
@@ -542,29 +552,168 @@ fetch("data.json")
         avatars2.src = data.currentUser.image.webp;
         avatars2.alt = data.currentUser.username;
         avatars2.className = "avatars2";
+        
+        const addReplyBox = document.createElement("div");
+        addReplyBox.className = "add-comment1";
 
-        const newComment = document.createElement("textarea");
-        newComment.name = "comment";
-        newComment.placeholder = "Add a comment...";
-        newComment.className = "comment";
-
-        const addCommentBox = document.createElement("div");
-        addCommentBox.className = "add-comment1";
-
-        const addReplyButton = document.createElement("button");
-        addReplyButton.className = "button";
-        addReplyButton.textContent = "REPLY";
-
-        addCommentBox.appendChild(avatars2);
-        addCommentBox.appendChild(newComment);
-        addCommentBox.appendChild(addReplyButton);
+        addReplyBox.appendChild(avatars2);
+        addReplyBox.appendChild(newReply3);
+        addReplyBox.appendChild(addReplyButton3);
 
         const reply1 = document.querySelector(".reply1");
 
-        reply1.after(addCommentBox);
+        reply1.after(addReplyBox);
       },
       { once: true }
     );
+
+    //-------------------------------------------------------------
+
+    //Reply(ramses)へのリプライ
+    addReplyButton3.addEventListener("click",function () {
+
+      console.log("hakutyann");
+  
+      const content = document.createElement("div")
+      content.className = "content"
+  
+      //スコアボタン
+      const scorenun = document.createElement("div")
+      scorenun.className = "scorenun"
+      scorenun.textContent = 0 //データは仮
+  
+      const score = document.createElement("div")
+      score.className = "score"
+  
+      const plusBtnImg = document.createElement("img")
+      plusBtnImg.src = "images/icon-plus.svg"
+      plusBtnImg.alt = "plus"
+    
+      const plusbutton = document.createElement("button")
+      plusbutton.className = "plusBtn"
+  
+      plusbutton.appendChild(plusBtnImg)
+  
+      const minusBtnImg = document.createElement("img")
+      minusBtnImg.src = "images/icon-minus.svg"
+      minusBtnImg.alt = "minus"
+  
+      const minusbutton = document.createElement("button")
+      minusbutton.className = "minusBtn"
+  
+      minusbutton.appendChild(minusBtnImg)
+  
+      score.appendChild(plusbutton)
+      score.appendChild(scorenun)
+      score.appendChild(minusbutton)
+  
+  
+      //　user-headline
+  
+        //user-name
+        const myAvatar = document.createElement("img");
+        myAvatar.src = data.currentUser.image.webp;
+        myAvatar.alt = data.currentUser.username;
+        myAvatar.className = "avatars";
+  
+        const name = document.createElement("div")
+        name.textContent = data.currentUser.username
+        name.className = "name"
+  
+        const you = document.createElement("div")
+        you.textContent = "you"
+        you.className = "you"
+  
+        const date = document.createElement("div")
+        date.textContent = new Date();
+        date.className = "date"
+  
+        
+  
+        const userName = document.createElement("div")
+        userName.className = "user-name"
+  
+        userName.appendChild(myAvatar)
+        userName.appendChild(name)
+        userName.appendChild(you)
+        userName.appendChild(date)
+  
+      
+  
+        // deleteicon
+        const deleteImg = document.createElement("img")
+        deleteImg.src = "images/icon-delete.svg"
+        deleteImg.alt = "delete"
+  
+        const textDelete = document.createElement("span")
+        textDelete.textContent ="Delete"
+  
+  
+        const iconDelete = document.createElement("div")
+        iconDelete.className = "icon-delete"
+  
+        iconDelete.appendChild(deleteImg)
+        iconDelete.appendChild(textDelete)
+  
+        const iconDeleteBtn = document.createElement("button")
+        
+        iconDeleteBtn.appendChild(iconDelete)
+  
+        // edit-icon
+  
+        const editImg = document.createElement("img")
+        editImg.src = "images/icon-edit.svg"
+        editImg.alt = "edit"
+  
+        const textEdit = document.createElement("span")
+        textEdit.textContent ="Edit"
+  
+  
+        const iconEdit = document.createElement("div")
+        iconEdit.className = "icon-edit"
+  
+        iconEdit.appendChild(editImg)
+        iconEdit.appendChild(textEdit)
+  
+        const iconEditBtn = document.createElement("button")
+        
+        iconEditBtn.appendChild(iconEdit)
+  
+        const deleteeditIcon = document.createElement("div")
+        deleteeditIcon.className = "delete-edit-icon"
+  
+        deleteeditIcon.appendChild(iconDelete)
+        deleteeditIcon.appendChild(iconEdit)
+  
+        // text
+        const text = document.createElement("div")
+        text.textContent = newReply2.value
+        text.className = "text"
+  
+    
+      content.appendChild(score)
+      content.appendChild(userName)
+      content.appendChild(deleteeditIcon)
+      content.appendChild(text)
+  
+  
+  
+      const repliesM = document.createElement("ul")
+      repliesM.className = "replies"
+      const replyM = document.createElement("li")
+      replyM.className = "reply1"
+  
+  
+    
+      replyM.appendChild(content)
+      repliesM.appendChild(replyM)
+
+      comment2.appendChild(repliesM)
+
+  
+    })
+
+
 
     //-------------------------------------------------------------
 
