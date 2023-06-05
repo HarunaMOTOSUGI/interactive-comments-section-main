@@ -166,10 +166,9 @@ fetch("data.json")
       you.className = "you"
 
       const date = document.createElement("div")
-      date.textContent = new Date();
-      date.className = "date"
-
+      date.textContent = new Date().toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"});
       
+      date.className = "date"
 
       const userName = document.createElement("div")
       userName.className = "user-name"
@@ -181,7 +180,7 @@ fetch("data.json")
 
     
 
-      // deleteicon
+      // delete-icon
       const deleteImg = document.createElement("img")
       deleteImg.src = "images/icon-delete.svg"
       deleteImg.alt = "delete"
@@ -251,6 +250,45 @@ fetch("data.json")
     // addReplyBox.after(repliesA)
     comment1.appendChild(repliesA)
     // comments.appendChild(comment1)
+
+    iconEditBtn.addEventListener("click",function () {
+      console.log("pakup");
+      
+    })
+
+      //     //モーダル
+
+      // const modal = document.getElementById('easyModal');
+      // const buttonClose = document.getElementsByClassName('modalClose')[0];
+      // const modalDeleteBtn = document.querySelector(".delete")
+
+      // // Deleteボタンがクリックされた時
+      // iconDeleteBtn.addEventListener('click', modalOpen);
+      // function modalOpen() {
+      //   modal.style.display = 'block';
+      //   console.log("paku");
+      // }
+
+      // // モーダルコンテンツ以外がクリックされた時
+      // addEventListener('click', outsideClose);
+      // function outsideClose(e) {
+      //   if (e.target == modal) {
+      //     modal.style.display = 'none';
+      //   }
+      // }
+
+      // // NO,CANCELがクリックされた時
+      // buttonClose.addEventListener('click', modalClose);
+      // function modalClose() {
+      //   modal.style.display = 'none';
+      // }
+
+      // modalDeleteBtn.addEventListener("click",function () {
+      //   content.remove()
+      //   modal.style.display = 'none';
+
+        
+      // })
 
   })
 
@@ -337,12 +375,10 @@ fetch("data.json")
 
     //----------------------------------------------------------
 
-    //Maxへのリプライ
+    //Maxへのリプライ投稿
 
     addReplyButton2.addEventListener("click",function () {
 
-      console.log("hakutyann");
-  
       const content = document.createElement("div")
       content.className = "content"
   
@@ -394,7 +430,7 @@ fetch("data.json")
         you.className = "you"
   
         const date = document.createElement("div")
-        date.textContent = new Date();
+        date.textContent = new Date().toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"});
         date.className = "date"
   
         
@@ -479,8 +515,10 @@ fetch("data.json")
 
       comment2.appendChild(repliesM)
 
-  
     })
+
+    //Maxへのリプライを編集
+
 
 
 
@@ -625,7 +663,7 @@ fetch("data.json")
         you.className = "you"
   
         const date = document.createElement("div")
-        date.textContent = new Date();
+        date.textContent = new Date().toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"});
         date.className = "date"
   
         
@@ -710,6 +748,11 @@ fetch("data.json")
 
       comment2.appendChild(repliesM)
 
+      
+
+
+
+
   
     })
 
@@ -732,10 +775,9 @@ fetch("data.json")
     );
     scoreJ.textContent = data.comments[1].replies[1].score;
 
-    const textJ = document.querySelector(
-      "#comment2 > ul > li.edit-reply-content > textarea"
-    );
+    const textJ = document.querySelector(".edit-textarea")
     textJ.textContent = data.comments[1].replies[1].content;
+
 
     // スコアボタン
     plusbutton = document.querySelector(
@@ -757,9 +799,62 @@ fetch("data.json")
       }
     });
 
+
   //-----------------------------------------------------------------
 
   //リプライ編集
+
+  // const editBtn = document.querySelector("#comment2 > ul > li.edit-reply-content > div.delete-edit-icon > .button")
+  // editBtn.addEventListener("click", function() {
+  //   console.log("hakupaku");
+  // //   // const updateBtn = document.createElement("button")
+  // //   // updateBtn.className = "update-button"
+
+  // //   // const editRplyContent = document.querySelector("#comment2 > ul > li.edit-reply-content")
+  // //   // editRplyContent.className = "edit-reply-content"
+
+  // //   // editRplyContent.appendChild(updateBtn)
+  // //   // const replies = document.querySelector("#comment2 > ul")
+
+  // //   // replies.appendChild(editRplyContent)
+
+    
+
+    
+
+
+  // })
+
+   const iconEditBtn = document.querySelector("#comment2 > ul > li.edit-reply-content > div.delete-edit-icon > button:nth-child(2)")
+   iconEditBtn.addEventListener("click",function () {
+    updateBtn.classList.toggle("hide")
+
+
+   })
+ 
+    
+  // }) 
+
+
+
+  //-----------------------------------------------------------------
+
+  //自分のリプライをupdateする
+
+  const updateBtn = document.querySelector(".update-button")
+  const myComment = document.querySelector("#comment2 > ul > li.edit-reply-content > textarea")
+
+  updateBtn.addEventListener("click",function() {
+    
+    const newText = document.createElement("div")
+    newText.textContent = myComment.value
+
+    updateBtn.remove()
+
+
+
+  })
+
   
 
   // コメント追加ボックス
@@ -773,7 +868,6 @@ fetch("data.json")
   newComment.name = "comment";
   newComment.placeholder = "Add a comment...";
   newComment.className = "comment";
-
 
   const addCommentBox = document.createElement("div");
   addCommentBox.className = "add-comment1";
@@ -857,7 +951,7 @@ fetch("data.json")
       you.className = "you"
 
       const date = document.createElement("div")
-      date.textContent = new Date();
+      date.textContent = new Date().toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"});
       date.className = "date"
 
       
@@ -930,8 +1024,8 @@ fetch("data.json")
 
     content.appendChild(score)
     content.appendChild(userName)
-    content.appendChild(deleteeditIcon)
     content.appendChild(text)
+    content.appendChild(deleteeditIcon)
 
     const comment1 = document.createElement("div")
     comment1.id = "comment1"
@@ -945,20 +1039,21 @@ fetch("data.json")
 
 
 
-
   })
+
+  
 
   //-------------------------------------------------
 
 //モーダル
 
-const deleteBtn = document.querySelector("#comment2 > ul > li.edit-reply-content > div.delete-edit-icon > button:nth-child(1) > div")
+const iconDeleteBtn = document.querySelector("#comment2 > ul > li.edit-reply-content > div.delete-edit-icon > button:nth-child(1) > div")
 const modal = document.getElementById('easyModal');
 const buttonClose = document.getElementsByClassName('modalClose')[0];
 const modalDeleteBtn = document.querySelector(".delete")
 
 // Deleteボタンがクリックされた時
-deleteBtn.addEventListener('click', modalOpen);
+iconDeleteBtn.addEventListener('click', modalOpen);
 function modalOpen() {
   modal.style.display = 'block';
 }

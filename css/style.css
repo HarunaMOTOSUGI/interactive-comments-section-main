@@ -180,7 +180,7 @@ ul {
   margin-top: 8px;
   margin-bottom: auto;
   margin-left: auto;
-  grid-area: delete-edit;
+  /* grid-area: delete-edit; */
   font-weight: 500;
 }
 
@@ -333,7 +333,8 @@ textarea {
 
 .modal-content {
   background-color: #f4f4f4;
-  margin: 20% 35%;
+  margin: 20% auto;
+  width: 350px;
   border-radius: 5px;
   padding: 3%;
   text-align: left;
@@ -384,6 +385,10 @@ textarea {
 .modal-body {
   /* padding: 10px 20px; */
   color: black;
+}
+
+.hide {
+  display: none;
 }
 
 /* モバイル版
@@ -477,7 +482,7 @@ textarea {
   }
 
   .delete-edit-icon {
-    grid-area: delete-edit-icon;
+    /* grid-area: delete-edit-icon; */
     margin: auto;
   }
 
@@ -498,6 +503,11 @@ textarea {
   .button {
     grid-area: button;
     margin-left: auto;
+  }
+
+  .modal-content {
+    margin: 20%;
+    width: 250px;
   }
 
   /* ----------------------------------------- */
