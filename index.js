@@ -82,14 +82,16 @@ fetch("data.json")
 
     const comment1 = document.querySelector("#comment1");
 
+    let avatars2 = document.createElement("img");
+    avatars2.src = data.currentUser.image.webp;
+    avatars2.alt = data.currentUser.username;
+    avatars2.className = "avatars2";
+
     
     replybutton.addEventListener(
       "click",
       function () {
-        const avatars2 = document.createElement("img");
-        avatars2.src = data.currentUser.image.webp;
-        avatars2.alt = data.currentUser.username;
-        avatars2.className = "avatars2";
+
 
 
 
@@ -103,8 +105,7 @@ fetch("data.json")
   
         comment1.appendChild(addReplyBox);
 
-      },
-      { once: true }
+      }
     );
     
    //-----------------------------------------------------------
@@ -113,7 +114,7 @@ fetch("data.json")
 
    addReplyButton1.addEventListener("click",function () {
 
-    console.log("hakutyann");
+    
 
     const content = document.createElement("div")
     content.className = "content"
@@ -192,6 +193,51 @@ fetch("data.json")
       const iconDelete = document.createElement("div")
       iconDelete.className = "icon-delete"
 
+                //     //モーダル
+
+
+        const buttonClose = document.getElementsByClassName('modalClose')[0];
+        const modalDeleteBtn = document.querySelector(".delete")
+
+        // Deleteボタンがクリックされた時
+        iconDelete.addEventListener('click', modalOpen);
+        function modalOpen() {
+          modal.style.display = 'block';
+          console.log("paku");
+        }
+
+        // モーダルコンテンツ以外がクリックされた時
+        addEventListener('click', outsideClose);
+        function outsideClose(e) {
+          if (e.target == modal) {
+            modal.style.display = 'none';
+          }
+        }
+
+        // NO,CANCELがクリックされた時
+        buttonClose.addEventListener('click', modalClose);
+        function modalClose() {
+          modal.style.display = 'none';
+        }
+
+        modalDeleteBtn.addEventListener('click', e=> {
+          // const li = e.target.closest('li')
+          // li.remove()
+          // modal.style.display = 'none';
+          content.remove()
+          addReplyBox.remove()
+          modal.style.display = 'none';
+
+
+
+          
+        })
+        
+      
+
+
+
+
       iconDelete.appendChild(deleteImg)
       iconDelete.appendChild(textDelete)
 
@@ -211,6 +257,29 @@ fetch("data.json")
 
       const iconEdit = document.createElement("div")
       iconEdit.className = "icon-edit"
+
+      // iconEdit.addEventListener('click', e=> {
+      //   // console.log(e.target);
+      //   const p = e.target.closest('.delete-edit-icon').nextElementSibling
+      //   const textContent = p.textContent
+      //   console.log(textContent);
+      //   const ta = document.createElement('textarea')
+      //   ta.className ="text"
+      //   ta.value = textContent
+      //   p.parentElement.appendChild(ta)
+      //   console.log(p.parentElement);
+      //   const updateBtn = document.querySelector(".update-button")
+      //   p.parentElement.appendChild(updateBtn)
+      //   p.remove()
+
+      // })
+
+      iconEdit.addEventListener("click",function () {
+        const editRplyContent = document.querySelector(".edit-reply-content")
+        console.log(editRplyContent);
+        const editBox = document.createElement("li")
+        content.remove()
+      })
 
       iconEdit.appendChild(editImg)
       iconEdit.appendChild(textEdit)
@@ -250,11 +319,6 @@ fetch("data.json")
     // addReplyBox.after(repliesA)
     comment1.appendChild(repliesA)
     // comments.appendChild(comment1)
-
-    iconEditBtn.addEventListener("click",function () {
-      console.log("pakup");
-      
-    })
 
       //     //モーダル
 
@@ -347,6 +411,9 @@ fetch("data.json")
     addReplyButton2.className = "button";
     addReplyButton2.textContent = "REPLY";
 
+    const addReplyBox2 = document.createElement("div");
+    addReplyBox2.className = "add-comment2";
+
     replybutton.addEventListener(
       "click",
       function () {
@@ -355,22 +422,14 @@ fetch("data.json")
         avatars2.alt = data.currentUser.username;
         avatars2.className = "avatars2";
 
-
-
-        const addReplyBox = document.createElement("div");
-        addReplyBox.className = "add-comment1";
-
-
-
-        addReplyBox.appendChild(avatars2);
-        addReplyBox.appendChild(newReply2);
-        addReplyBox.appendChild(addReplyButton2);
+        addReplyBox2.appendChild(avatars2);
+        addReplyBox2.appendChild(newReply2);
+        addReplyBox2.appendChild(addReplyButton2);
 
         const replies = document.querySelector("#comment2 > ul");
 
-        replies.before(addReplyBox);
-      },
-      { once: true }
+        replies.before(addReplyBox2);
+      }
     );
 
     //----------------------------------------------------------
@@ -459,6 +518,49 @@ fetch("data.json")
   
         iconDelete.appendChild(deleteImg)
         iconDelete.appendChild(textDelete)
+
+        iconDelete.addEventListener('click', e=> {})
+        // console.log(e);
+        // const li = e.target.closest('li')
+        // console.log(li);
+
+                //     //モーダル
+
+
+        const buttonClose = document.getElementsByClassName('modalClose')[0];
+        const modalDeleteBtn = document.querySelector(".delete")
+
+        // Deleteボタンがクリックされた時
+        iconDelete.addEventListener('click', modalOpen);
+        function modalOpen() {
+          modal.style.display = 'block';
+          console.log("paku");
+        }
+
+        // モーダルコンテンツ以外がクリックされた時
+        addEventListener('click', outsideClose);
+        function outsideClose(e) {
+          if (e.target == modal) {
+            modal.style.display = 'none';
+          }
+        }
+
+        // NO,CANCELがクリックされた時
+        buttonClose.addEventListener('click', modalClose);
+        function modalClose() {
+          modal.style.display = 'none';
+        }
+
+        modalDeleteBtn.addEventListener('click', e=> {
+          // const li = e.target.closest('li')
+          // li.remove()
+          // modal.style.display = 'none';
+          content.remove()
+          modal.style.display = 'none';
+          addReplyBox2.remove()
+
+          
+        })
   
         const iconDeleteBtn = document.createElement("button")
         
@@ -571,7 +673,7 @@ fetch("data.json")
 
     //<li class="reply1">内のReplyボタン押下でadd-comment1出現
 
-    replybutton = document.querySelector("#comment2 > ul > li.reply1 > div > button > div")
+    replybutton = document.querySelector("#comment2 > ul:nth-child(2) > li.reply1 > div > button > div")
     
     const addReplyButton3 = document.createElement("button");
     addReplyButton3.className = "button";
@@ -582,6 +684,8 @@ fetch("data.json")
     newReply3.placeholder = "Add a comment...";
     newReply3.className = "comment";
 
+    const addReplyBox3 = document.createElement("div");
+    addReplyBox3.className = "add-comment3";
 
     replybutton.addEventListener(
       "click",
@@ -591,18 +695,16 @@ fetch("data.json")
         avatars2.alt = data.currentUser.username;
         avatars2.className = "avatars2";
 
-        const addReplyBox = document.createElement("div");
-        addReplyBox.className = "add-comment1";
 
-        addReplyBox.appendChild(avatars2);
-        addReplyBox.appendChild(newReply3);
-        addReplyBox.appendChild(addReplyButton3);
+
+        addReplyBox3.appendChild(avatars2);
+        addReplyBox3.appendChild(newReply3);
+        addReplyBox3.appendChild(addReplyButton3);
 
         const reply1 = document.querySelector(".reply1");
 
-        reply1.after(addReplyBox);
-      },
-      { once: true }
+        reply1.after(addReplyBox3);
+      }
     );
 
     //-------------------------------------------------------------
@@ -692,6 +794,49 @@ fetch("data.json")
   
         iconDelete.appendChild(deleteImg)
         iconDelete.appendChild(textDelete)
+
+        iconDelete.addEventListener('click', e=> {})
+        // console.log(e);
+        // const li = e.target.closest('li')
+        // console.log(li);
+
+                //     //モーダル
+
+
+        const buttonClose = document.getElementsByClassName('modalClose')[0];
+        const modalDeleteBtn = document.querySelector(".delete")
+
+        // Deleteボタンがクリックされた時
+        iconDelete.addEventListener('click', modalOpen);
+        function modalOpen() {
+          modal.style.display = 'block';
+          console.log("paku");
+        }
+
+        // モーダルコンテンツ以外がクリックされた時
+        addEventListener('click', outsideClose);
+        function outsideClose(e) {
+          if (e.target == modal) {
+            modal.style.display = 'none';
+          }
+        }
+
+        // NO,CANCELがクリックされた時
+        buttonClose.addEventListener('click', modalClose);
+        function modalClose() {
+          modal.style.display = 'none';
+        }
+
+        modalDeleteBtn.addEventListener('click', e=> {
+          // const li = e.target.closest('li')
+          // li.remove()
+          // modal.style.display = 'none';
+          content.remove()
+          addReplyBox3.remove()
+          modal.style.display = 'none';
+
+          
+        })
   
         const iconDeleteBtn = document.createElement("button")
         
@@ -828,6 +973,16 @@ fetch("data.json")
    const iconEditBtn = document.querySelector("#comment2 > ul > li.edit-reply-content > div.delete-edit-icon > button:nth-child(2)")
    iconEditBtn.addEventListener("click",function () {
     updateBtn.classList.toggle("hide")
+    textJ.remove()
+    const editTextarea = document.createElement("textarea")
+    editTextarea.className ="edit-textarea"
+    editTextarea.textContent = textJ.textContent
+    
+    const editRplyContent = document.querySelector("#comment2 > ul > li.edit-reply-content")
+    editRplyContent.appendChild(editTextarea)
+
+
+
 
 
    })
@@ -844,22 +999,22 @@ fetch("data.json")
   const updateBtn = document.querySelector(".update-button")
   const myComment = document.querySelector("#comment2 > ul > li.edit-reply-content > textarea")
 
-  updateBtn.addEventListener("click",function() {
+  // updateBtn.addEventListener("click",function() {
     
-    const newText = document.createElement("div")
-    newText.textContent = myComment.value
+  //   const newText = document.createElement("div")
+  //   newText.textContent = myComment.value
 
-    updateBtn.remove()
+  //   updateBtn.remove()
 
 
 
-  })
+  // })
 
   
 
   // コメント追加ボックス
 
-  const avatars2 = document.createElement("img");
+  avatars2 = document.createElement("img");
   avatars2.src = data.currentUser.image.webp;
   avatars2.alt = data.currentUser.username;
   avatars2.className = "avatars2";
@@ -897,8 +1052,6 @@ fetch("data.json")
 // SENDボタン押下でコメント投稿
 
   addCommentButton.addEventListener("click",function () {
-
-    console.log("hakutyann");
 
     const content = document.createElement("div")
     content.className = "content"
@@ -981,6 +1134,43 @@ fetch("data.json")
       iconDelete.appendChild(deleteImg)
       iconDelete.appendChild(textDelete)
 
+                      //     //モーダル
+
+
+                      const buttonClose = document.getElementsByClassName('modalClose')[0];
+                      const modalDeleteBtn = document.querySelector(".delete")
+              
+                      // Deleteボタンがクリックされた時
+                      iconDelete.addEventListener('click', modalOpen);
+                      function modalOpen() {
+                        modal.style.display = 'block';
+                        console.log("paku");
+                      }
+              
+                      // モーダルコンテンツ以外がクリックされた時
+                      addEventListener('click', outsideClose);
+                      function outsideClose(e) {
+                        if (e.target == modal) {
+                          modal.style.display = 'none';
+                        }
+                      }
+              
+                      // NO,CANCELがクリックされた時
+                      buttonClose.addEventListener('click', modalClose);
+                      function modalClose() {
+                        modal.style.display = 'none';
+                      }
+              
+                      modalDeleteBtn.addEventListener('click', e=> {
+                        // const li = e.target.closest('li')
+                        // li.remove()
+                        // modal.style.display = 'none';
+                        content.remove()
+                        modal.style.display = 'none';
+              
+                        
+                      })
+
       const iconDeleteBtn = document.createElement("button")
       
       iconDeleteBtn.appendChild(iconDelete)
@@ -1051,34 +1241,6 @@ const iconDeleteBtn = document.querySelector("#comment2 > ul > li.edit-reply-con
 const modal = document.getElementById('easyModal');
 const buttonClose = document.getElementsByClassName('modalClose')[0];
 const modalDeleteBtn = document.querySelector(".delete")
-
-// Deleteボタンがクリックされた時
-iconDeleteBtn.addEventListener('click', modalOpen);
-function modalOpen() {
-  modal.style.display = 'block';
-}
-
-// モーダルコンテンツ以外がクリックされた時
-addEventListener('click', outsideClose);
-function outsideClose(e) {
-  if (e.target == modal) {
-    modal.style.display = 'none';
-  }
-}
-
-// NO,CANCELがクリックされた時
-buttonClose.addEventListener('click', modalClose);
-function modalClose() {
-  modal.style.display = 'none';
-}
-
-modalDeleteBtn.addEventListener("click",function () {
-  const editReply = document.querySelector(".edit-reply-content")
-  editReply.remove()
-  modal.style.display = 'none';
-
-  
-})
 
 //------------------------------------------------------
 
