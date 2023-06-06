@@ -81,7 +81,7 @@ ul {
   grid-template:
     "score user-name reply"
     "score text text"
-    ". . update-button";
+    ". . update";
   gap: 1rem;
   background-color: hsl(0, 0%, 100%);
   max-width: 100%;
@@ -437,7 +437,8 @@ textarea {
     grid-template:
       "user-name user-name"
       "text text"
-      "score reply";
+      "score reply"
+      ". update";
     grid-template-columns: 50% 50%;
     width: 100%;
     grid-column-gap: 0rem;
@@ -501,9 +502,9 @@ textarea {
     white-space: nowrap;
   }
 
-  .update-button {
+  /* .update-button {
     grid-area: update-button;
-  }
+  } */
 
   .button {
     grid-area: button;

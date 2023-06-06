@@ -167,8 +167,40 @@ fetch("data.json")
       you.className = "you"
 
       const date = document.createElement("div")
-      date.textContent = new Date().toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"});
+
+      const timeAgo = (date) => {
+        const seconds = Math.floor((new Date() - date) / 1000);
       
+        let interval = Math.floor(seconds / 31536000);
+        if (interval > 1) {
+          return interval + ' years ago';
+        }
+      
+        interval = Math.floor(seconds / 2592000);
+        if (interval > 1) {
+          return interval + ' months ago';
+        }
+      
+        interval = Math.floor(seconds / 86400);
+        if (interval > 1) {
+          return interval + ' days ago';
+        }
+      
+        interval = Math.floor(seconds / 3600);
+        if (interval > 1) {
+          return interval + ' hours ago';
+        }
+      
+        interval = Math.floor(seconds / 60);
+        if (interval > 1) {
+          return interval + ' minutes ago';
+        }
+      
+        if(seconds < 10) return 'just now';
+      
+        return Math.floor(seconds) + ' seconds ago';
+      };
+      date.textContent =(timeAgo(new Date()))
       date.className = "date"
 
       const userName = document.createElement("div")
@@ -258,28 +290,34 @@ fetch("data.json")
       const iconEdit = document.createElement("div")
       iconEdit.className = "icon-edit"
 
-      // iconEdit.addEventListener('click', e=> {
-      //   // console.log(e.target);
-      //   const p = e.target.closest('.delete-edit-icon').nextElementSibling
-      //   const textContent = p.textContent
-      //   console.log(textContent);
-      //   const ta = document.createElement('textarea')
-      //   ta.className ="text"
-      //   ta.value = textContent
-      //   p.parentElement.appendChild(ta)
-      //   console.log(p.parentElement);
-      //   const updateBtn = document.querySelector(".update-button")
-      //   p.parentElement.appendChild(updateBtn)
-      //   p.remove()
+      iconEdit.addEventListener('click', e=> {
+        // console.log(e.target);
+        const p = e.target.closest('.delete-edit-icon').nextElementSibling
+        const textContent = p.textContent
+        console.log(textContent);
+        const ta = document.createElement('textarea')
+        ta.className ="text"
+        ta.value = textContent
+        p.parentElement.appendChild(ta)
+        console.log(p.parentElement);
+        const updateBtn = document.createElement("div")
+        updateBtn.className = "update-button"
+        const update =document.createElement("button")
+        update.className = "button"
+        update.textContent = "UPDATE"
+        updateBtn.appendChild(update)
 
-      // })
+        p.parentElement.appendChild(updateBtn)
+        p.remove()
 
-      iconEdit.addEventListener("click",function () {
-        const editRplyContent = document.querySelector(".edit-reply-content")
-        console.log(editRplyContent);
-        const editBox = document.createElement("li")
-        content.remove()
       })
+
+      // iconEdit.addEventListener("click",function () {
+      //   const editRplyContent = document.querySelector(".edit-reply-content")
+      //   console.log(editRplyContent);
+      //   const editBox = document.createElement("li")
+      //   content.remove()
+      // })
 
       iconEdit.appendChild(editImg)
       iconEdit.appendChild(textEdit)
@@ -489,7 +527,39 @@ fetch("data.json")
         you.className = "you"
   
         const date = document.createElement("div")
-        date.textContent = new Date().toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"});
+        const timeAgo = (date) => {
+          const seconds = Math.floor((new Date() - date) / 1000);
+        
+          let interval = Math.floor(seconds / 31536000);
+          if (interval > 1) {
+            return interval + ' years ago';
+          }
+        
+          interval = Math.floor(seconds / 2592000);
+          if (interval > 1) {
+            return interval + ' months ago';
+          }
+        
+          interval = Math.floor(seconds / 86400);
+          if (interval > 1) {
+            return interval + ' days ago';
+          }
+        
+          interval = Math.floor(seconds / 3600);
+          if (interval > 1) {
+            return interval + ' hours ago';
+          }
+        
+          interval = Math.floor(seconds / 60);
+          if (interval > 1) {
+            return interval + ' minutes ago';
+          }
+        
+          if(seconds < 10) return 'just now';
+        
+          return Math.floor(seconds) + ' seconds ago';
+        };
+        date.textContent =(timeAgo(new Date()))
         date.className = "date"
   
         
@@ -765,7 +835,39 @@ fetch("data.json")
         you.className = "you"
   
         const date = document.createElement("div")
-        date.textContent = new Date().toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"});
+        const timeAgo = (date) => {
+          const seconds = Math.floor((new Date() - date) / 1000);
+        
+          let interval = Math.floor(seconds / 31536000);
+          if (interval > 1) {
+            return interval + ' years ago';
+          }
+        
+          interval = Math.floor(seconds / 2592000);
+          if (interval > 1) {
+            return interval + ' months ago';
+          }
+        
+          interval = Math.floor(seconds / 86400);
+          if (interval > 1) {
+            return interval + ' days ago';
+          }
+        
+          interval = Math.floor(seconds / 3600);
+          if (interval > 1) {
+            return interval + ' hours ago';
+          }
+        
+          interval = Math.floor(seconds / 60);
+          if (interval > 1) {
+            return interval + ' minutes ago';
+          }
+        
+          if(seconds < 10) return 'just now';
+        
+          return Math.floor(seconds) + ' seconds ago';
+        };
+        date.textContent =(timeAgo(new Date()))
         date.className = "date"
   
         
@@ -1104,7 +1206,39 @@ fetch("data.json")
       you.className = "you"
 
       const date = document.createElement("div")
-      date.textContent = new Date().toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"});
+      const timeAgo = (date) => {
+        const seconds = Math.floor((new Date() - date) / 1000);
+      
+        let interval = Math.floor(seconds / 31536000);
+        if (interval > 1) {
+          return interval + ' years ago';
+        }
+      
+        interval = Math.floor(seconds / 2592000);
+        if (interval > 1) {
+          return interval + ' months ago';
+        }
+      
+        interval = Math.floor(seconds / 86400);
+        if (interval > 1) {
+          return interval + ' days ago';
+        }
+      
+        interval = Math.floor(seconds / 3600);
+        if (interval > 1) {
+          return interval + ' hours ago';
+        }
+      
+        interval = Math.floor(seconds / 60);
+        if (interval > 1) {
+          return interval + ' minutes ago';
+        }
+      
+        if(seconds < 10) return 'just now';
+      
+        return Math.floor(seconds) + ' seconds ago';
+      };
+      date.textContent =(timeAgo(new Date()))
       date.className = "date"
 
       
