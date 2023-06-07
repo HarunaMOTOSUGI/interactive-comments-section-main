@@ -344,9 +344,9 @@ textarea {
   animation-duration: 1s;
 }
 
-/* .hide {
+.hide {
   display: none;
-} */
+}
 
 @keyframes modalopen {
   from {opacity: 0}

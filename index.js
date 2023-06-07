@@ -78,7 +78,7 @@ fetch("data.json")
     newReply.className = "comment";
 
     const addReplyBox = document.createElement("div");
-    addReplyBox.className = "add-comment1";
+    addReplyBox.className = "add-comment1 hide";
 
     const comment1 = document.querySelector("#comment1");
 
@@ -93,7 +93,7 @@ fetch("data.json")
       function () {
 
 
-
+        addReplyBox.classList.toggle("hide")
 
 
 
@@ -290,6 +290,8 @@ fetch("data.json")
       const iconEdit = document.createElement("div")
       iconEdit.className = "icon-edit"
 
+
+      //edit-iconで編集
       iconEdit.addEventListener('click', e=> {
         // console.log(e.target);
         const p = e.target.closest('.delete-edit-icon').nextElementSibling
@@ -307,8 +309,19 @@ fetch("data.json")
         update.textContent = "UPDATE"
         updateBtn.appendChild(update)
 
+
         p.parentElement.appendChild(updateBtn)
         p.remove()
+
+        //update-buttonで編集確定
+        updateBtn.addEventListener("click", function () {
+          updateBtn.remove()
+          const newText = document.createElement("p")
+          newText.className = "text"
+          newText.innerHTML = ta.value
+          ta.replaceWith(newText)
+          
+        })        
 
       })
 
@@ -357,6 +370,8 @@ fetch("data.json")
     // addReplyBox.after(repliesA)
     comment1.appendChild(repliesA)
     // comments.appendChild(comment1)
+
+    addReplyBox.remove()
 
       //     //モーダル
 
@@ -450,15 +465,18 @@ fetch("data.json")
     addReplyButton2.textContent = "REPLY";
 
     const addReplyBox2 = document.createElement("div");
-    addReplyBox2.className = "add-comment2";
+    addReplyBox2.className = "add-comment2 hide";
+
+    avatars2.src = data.currentUser.image.webp;
+    avatars2.alt = data.currentUser.username;
+    avatars2.className = "avatars2";
 
     replybutton.addEventListener(
       "click",
       function () {
-        const avatars2 = document.createElement("img");
-        avatars2.src = data.currentUser.image.webp;
-        avatars2.alt = data.currentUser.username;
-        avatars2.className = "avatars2";
+
+
+        addReplyBox2.classList.toggle("hide")
 
         addReplyBox2.appendChild(avatars2);
         addReplyBox2.appendChild(newReply2);
@@ -661,6 +679,41 @@ fetch("data.json")
   
         deleteeditIcon.appendChild(iconDelete)
         deleteeditIcon.appendChild(iconEdit)
+
+        //edit-iconで編集する
+        iconEdit.addEventListener('click', e=> {
+          // console.log(e.target);
+          const p = e.target.closest('.delete-edit-icon').nextElementSibling
+          const textContent = p.textContent
+          console.log(textContent);
+          const ta = document.createElement('textarea')
+          ta.className ="text"
+          ta.value = textContent
+          p.parentElement.appendChild(ta)
+          console.log(p.parentElement);
+          const updateBtn = document.createElement("div")
+          updateBtn.className = "update-button"
+          const update =document.createElement("button")
+          update.className = "button"
+          update.textContent = "UPDATE"
+          updateBtn.appendChild(update)
+  
+          p.parentElement.appendChild(updateBtn)
+          p.remove()
+
+          
+        //update-buttonで編集確定
+        updateBtn.addEventListener("click", function () {
+          updateBtn.remove()
+          const newText = document.createElement("p")
+          newText.className = "text"
+          newText.innerHTML = ta.value
+          ta.replaceWith(newText)
+          
+        })        
+
+  
+        },{once:true})
   
         // text
         const text = document.createElement("div")
@@ -686,6 +739,8 @@ fetch("data.json")
       repliesM.appendChild(replyM)
 
       comment2.appendChild(repliesM)
+
+      addReplyBox2.remove()
 
     })
 
@@ -755,17 +810,18 @@ fetch("data.json")
     newReply3.className = "comment";
 
     const addReplyBox3 = document.createElement("div");
-    addReplyBox3.className = "add-comment3";
+    addReplyBox3.className = "add-comment3 hide";
+
+    avatars2.src = data.currentUser.image.webp;
+    avatars2.alt = data.currentUser.username;
+    avatars2.className = "avatars2";
+
 
     replybutton.addEventListener(
       "click",
       function () {
-        const avatars2 = document.createElement("img");
-        avatars2.src = data.currentUser.image.webp;
-        avatars2.alt = data.currentUser.username;
-        avatars2.className = "avatars2";
 
-
+        addReplyBox3.classList.toggle("hide")
 
         addReplyBox3.appendChild(avatars2);
         addReplyBox3.appendChild(newReply3);
@@ -902,7 +958,7 @@ fetch("data.json")
         // const li = e.target.closest('li')
         // console.log(li);
 
-                //     //モーダル
+        //モーダル
 
 
         const buttonClose = document.getElementsByClassName('modalClose')[0];
@@ -969,6 +1025,42 @@ fetch("data.json")
   
         deleteeditIcon.appendChild(iconDelete)
         deleteeditIcon.appendChild(iconEdit)
+
+        //edit-iconで編集する
+        iconEdit.addEventListener('click', e=> {
+          // console.log(e.target);
+          const p = e.target.closest('.delete-edit-icon').nextElementSibling
+          const textContent = p.textContent
+          console.log(textContent);
+          const ta = document.createElement('textarea')
+          ta.className ="text"
+          ta.value = textContent
+          p.parentElement.appendChild(ta)
+          console.log(p.parentElement);
+          const updateBtn = document.createElement("div")
+          updateBtn.className = "update-button"
+          const update =document.createElement("button")
+          update.className = "button"
+          update.textContent = "UPDATE"
+          updateBtn.appendChild(update)
+  
+          p.parentElement.appendChild(updateBtn)
+          p.remove()
+
+          
+        //update-buttonで編集確定
+        updateBtn.addEventListener("click", function () {
+          updateBtn.remove()
+          const newText = document.createElement("p")
+          newText.className = "text"
+          newText.innerHTML = ta.value
+          ta.replaceWith(newText)
+          
+        })        
+
+  
+        },{once:true})
+        //----------------------------------
   
         // text
         const text = document.createElement("div")
@@ -994,6 +1086,8 @@ fetch("data.json")
       repliesM.appendChild(replyM)
 
       comment2.appendChild(repliesM)
+
+      addReplyBox3.remove()
 
       
 
@@ -1329,6 +1423,31 @@ fetch("data.json")
       
       iconEditBtn.appendChild(iconEdit)
 
+      //edit-iconで編集する
+
+      iconEdit.addEventListener('click', e=> {
+        // console.log(e.target);
+        const p = e.target.closest('.delete-edit-icon').nextElementSibling
+        const textContent = p.textContent
+        console.log(textContent);
+        const ta = document.createElement('textarea')
+        ta.className ="text"
+        ta.value = textContent
+        p.parentElement.appendChild(ta)
+        console.log(p.parentElement);
+        const updateBtn = document.createElement("div")
+        updateBtn.className = "update-button"
+        const update =document.createElement("button")
+        update.className = "button"
+        update.textContent = "UPDATE"
+        updateBtn.appendChild(update)
+
+        p.parentElement.appendChild(updateBtn)
+        p.remove()
+
+      },{once:true})
+      //---------------------------------------
+
       const deleteeditIcon = document.createElement("div")
       deleteeditIcon.className = "delete-edit-icon"
 
@@ -1348,8 +1467,8 @@ fetch("data.json")
 
     content.appendChild(score)
     content.appendChild(userName)
-    content.appendChild(text)
     content.appendChild(deleteeditIcon)
+    content.appendChild(text)
 
     const comment1 = document.createElement("div")
     comment1.id = "comment1"
