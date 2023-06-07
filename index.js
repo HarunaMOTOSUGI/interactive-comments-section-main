@@ -336,7 +336,7 @@ fetch("data.json")
           
         })        
 
-      })
+      },{once:true})
 
       // iconEdit.addEventListener("click",function () {
       //   const editRplyContent = document.querySelector(".edit-reply-content")

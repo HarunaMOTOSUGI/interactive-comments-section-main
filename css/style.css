@@ -448,6 +448,7 @@ textarea {
 
   .text {
     width: 100%;
+    margin: auto;
   }
 
   .comment {
@@ -478,8 +479,8 @@ textarea {
     grid-template:
       "user-name user-name"
       "edit-textarea edit-textarea"
-      "score delete-edit-icon"
-      ". update-button";
+      "score delete-edit"
+      ". update";
     grid-template-columns: 50% 50%;
     column-gap: 0rem;
   }
