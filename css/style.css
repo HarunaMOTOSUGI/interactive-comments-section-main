@@ -82,6 +82,7 @@ ul {
     "score user-name reply"
     "score text text"
     ". . update";
+  grid-template-columns: 6% 50% 38%; /*要見直し*/
   gap: 1rem;
   background-color: hsl(0, 0%, 100%);
   max-width: 100%;
