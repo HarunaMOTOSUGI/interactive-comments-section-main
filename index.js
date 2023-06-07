@@ -17,6 +17,18 @@ fetch("data.json")
     //   key: value,
     // }, list=[q1,2,3,3,32,42,3,2]
 
+      //-------------------------------------------------
+
+    //モーダル
+
+    const iconDeleteBtn = document.querySelector("#comment2 > ul > li.edit-reply-content > div.delete-edit-icon > button:nth-child(1) > div")
+    const modal = document.getElementById('easyModal');
+    const buttonClose = document.getElementsByClassName('modalClose')[0];
+    const modalDeleteBtn = document.querySelector(".delete")
+
+    //------------------------------------------------------
+
+
 
     // comment1 > content(Amy)------------------
     const avatar = document.querySelector(".avatars");
@@ -113,8 +125,6 @@ fetch("data.json")
    //Amyへのリプライ
 
    addReplyButton1.addEventListener("click",function () {
-
-    
 
     const content = document.createElement("div")
     content.className = "content"
@@ -303,14 +313,17 @@ fetch("data.json")
         p.parentElement.appendChild(ta)
         console.log(p.parentElement);
         const updateBtn = document.createElement("div")
-        updateBtn.className = "update-button"
+        updateBtn.className = "update-button hide"
         const update =document.createElement("button")
         update.className = "button"
         update.textContent = "UPDATE"
         updateBtn.appendChild(update)
 
 
+
+
         p.parentElement.appendChild(updateBtn)
+        updateBtn.classList.toggle("hide")
         p.remove()
 
         //update-buttonで編集確定
@@ -1141,6 +1154,86 @@ fetch("data.json")
     });
 
 
+        //モーダル
+
+
+        // const buttonClose = document.getElementsByClassName('modalClose')[0];
+        // const modalDeleteBtn = document.querySelector(".delete")
+
+        const iconDelete = document.querySelector(".delete-edit-icon .icon-delete")
+
+        // Deleteボタンがクリックされた時
+        iconDelete.addEventListener('click', modalOpen);
+        function modalOpen() {
+          modal.style.display = 'block';
+          console.log("paku");
+        }
+
+        // モーダルコンテンツ以外がクリックされた時
+        addEventListener('click', outsideClose);
+        function outsideClose(e) {
+          if (e.target == modal) {
+            modal.style.display = 'none';
+          }
+        }
+
+        // NO,CANCELがクリックされた時
+        buttonClose.addEventListener('click', modalClose);
+        function modalClose() {
+          modal.style.display = 'none';
+        }
+
+        modalDeleteBtn.addEventListener('click', e=> {
+          // const li = e.target.closest('li')
+          // li.remove()
+          // contentmodal.style.display = 'none';
+
+          const li = iconDelete.closest("li")
+          li.remove()
+          addReplyBox3.remove()
+          modal.style.display = 'none';
+
+          
+        })    
+
+        //edit-iconで編集する
+        const iconEdit = document.querySelector(".delete-edit-icon .icon-edit")
+
+        iconEdit.addEventListener('click', e=> {
+          // console.log(e.target);
+          const p = e.target.closest('.delete-edit-icon').nextElementSibling
+          const textContent = p.textContent
+          console.log(textContent);
+          const ta = document.createElement('textarea')
+          ta.className ="edit-textarea"
+          ta.value = textContent
+          p.parentElement.appendChild(ta)
+          console.log(p.parentElement);
+          const updateBtn = document.createElement("div")
+          updateBtn.className = "update-button"
+          const update =document.createElement("button")
+          update.className = "button"
+          update.textContent = "UPDATE"
+          updateBtn.appendChild(update)
+  
+          p.parentElement.appendChild(updateBtn)
+          p.remove()
+
+          
+          //update-buttonで編集確定
+          updateBtn.addEventListener("click", function () {
+            updateBtn.remove()
+            const newText = document.createElement("p")
+            newText.className = "edit-textarea"
+            newText.innerHTML = ta.value
+            ta.replaceWith(newText)
+          
+           })
+
+  
+        },{once:true})
+
+
   //-----------------------------------------------------------------
 
   //リプライ編集
@@ -1164,27 +1257,27 @@ fetch("data.json")
     
 
 
-  // })
+  // // })
 
-   const iconEditBtn = document.querySelector("#comment2 > ul > li.edit-reply-content > div.delete-edit-icon > button:nth-child(2)")
-   iconEditBtn.addEventListener("click",function () {
-    updateBtn.classList.toggle("hide")
-    textJ.remove()
-    const editTextarea = document.createElement("textarea")
-    editTextarea.className ="edit-textarea"
-    editTextarea.textContent = textJ.textContent
+  //  const iconEditBtn = document.querySelector("#comment2 > ul > li.edit-reply-content > div.delete-edit-icon > button:nth-child(2)")
+  //  iconEditBtn.addEventListener("click",function () {
+  //   updateBtn.classList.toggle("hide")
+  //   textJ.remove()
+  //   const editTextarea = document.createElement("textarea")
+  //   editTextarea.className ="edit-textarea"
+  //   editTextarea.textContent = textJ.textContent
     
-    const editRplyContent = document.querySelector("#comment2 > ul > li.edit-reply-content")
-    editRplyContent.appendChild(editTextarea)
+  //   const editRplyContent = document.querySelector("#comment2 > ul > li.edit-reply-content")
+  //   editRplyContent.appendChild(editTextarea)
 
 
 
 
 
-   })
+  //  })
  
     
-  // }) 
+  // // }) 
 
 
 
@@ -1192,8 +1285,8 @@ fetch("data.json")
 
   //自分のリプライをupdateする
 
-  const updateBtn = document.querySelector(".update-button")
-  const myComment = document.querySelector("#comment2 > ul > li.edit-reply-content > textarea")
+  // const updateBtn = document.querySelector(".update-button")
+  // const myComment = document.querySelector("#comment2 > ul > li.edit-reply-content > textarea")
 
   // updateBtn.addEventListener("click",function() {
     
@@ -1490,10 +1583,10 @@ fetch("data.json")
 
 //モーダル
 
-const iconDeleteBtn = document.querySelector("#comment2 > ul > li.edit-reply-content > div.delete-edit-icon > button:nth-child(1) > div")
-const modal = document.getElementById('easyModal');
-const buttonClose = document.getElementsByClassName('modalClose')[0];
-const modalDeleteBtn = document.querySelector(".delete")
+// const iconDeleteBtn = document.querySelector("#comment2 > ul > li.edit-reply-content > div.delete-edit-icon > button:nth-child(1) > div")
+// const modal = document.getElementById('easyModal');
+// const buttonClose = document.getElementsByClassName('modalClose')[0];
+// const modalDeleteBtn = document.querySelector(".delete")
 
 //------------------------------------------------------
 

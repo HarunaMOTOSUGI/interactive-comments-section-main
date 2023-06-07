@@ -313,6 +313,7 @@ textarea {
 .edit-textarea {
   margin: 0;
   grid-area: edit-textarea;
+  color: hsl(211, 10%, 45%);
 
 }
 
