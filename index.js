@@ -244,7 +244,6 @@ fetch("data.json")
         iconDelete.addEventListener('click', modalOpen);
         function modalOpen() {
           modal.style.display = 'block';
-          console.log("paku");
         }
 
         // モーダルコンテンツ以外がクリックされた時
