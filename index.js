@@ -4,20 +4,6 @@ fetch("data.json")
   })
   .then((data) => {
     console.log(data);
-    // Work with JSON data here
-    // data.comments  data.currentUser
-    // const commentList = document.getElementById('comments') // ul#comments
-    // const commentList = document.getElementById('comments') // ul#comments
-    // for (const comment of data.comments) {
-    //   const li = createComment(comment)
-    //   commentList.appendChild(li)
-    // }
-
-    // obj = {
-    //   key: value,
-    // }, list=[q1,2,3,3,32,42,3,2]
-
-      //-------------------------------------------------
 
     //モーダル
 
@@ -43,8 +29,9 @@ fetch("data.json")
     const text = document.querySelector(".text");
     text.textContent = data.comments[0].content;
 
-    const score = document.querySelector(".scorenun"); //<div class="scorenun">11</div>
+    const score = document.querySelector(".scorenun"); //<div class="scorenun">12</div>
     score.textContent = data.comments[0].score; //score.textContent=12
+
 
     // スコアボタン
 
@@ -108,8 +95,6 @@ fetch("data.json")
         addReplyBox.classList.toggle("hide")
 
 
-
-
         addReplyBox.appendChild(avatars2);
         addReplyBox.appendChild(newReply);
         addReplyBox.appendChild(addReplyButton1);
@@ -132,7 +117,8 @@ fetch("data.json")
     //スコアボタン
     const scorenun = document.createElement("div")
     scorenun.className = "scorenun"
-    scorenun.textContent = 0 //データは仮
+    scorenun.textContent = 0
+    scorenun.value = 0 //データは仮
 
     const score = document.createElement("div")
     score.className = "score"
@@ -155,10 +141,23 @@ fetch("data.json")
 
     minusbutton.appendChild(minusBtnImg)
 
+
     score.appendChild(plusbutton)
     score.appendChild(scorenun)
     score.appendChild(minusbutton)
 
+    plusbutton.addEventListener("click", function () {
+      if (scorenun.textContent < scorenun.value + 1) {
+        scorenun.textContent++;
+      }
+    });
+
+    minusbutton.addEventListener("click", function () {
+      if (scorenun.textContent > scorenun.value -1) {
+        scorenun.textContent--;
+      }
+
+    })
 
     //　user-headline
 
@@ -235,7 +234,7 @@ fetch("data.json")
       const iconDelete = document.createElement("div")
       iconDelete.className = "icon-delete"
 
-                //     //モーダル
+        //モーダル
 
 
         const buttonClose = document.getElementsByClassName('modalClose')[0];
@@ -263,23 +262,11 @@ fetch("data.json")
         }
 
         modalDeleteBtn.addEventListener('click', e=> {
-          // const li = e.target.closest('li')
-          // li.remove()
-          // modal.style.display = 'none';
           content.remove()
           addReplyBox.remove()
-          modal.style.display = 'none';
-
-
-
-          
+          modal.style.display = 'none'; 
         })
         
-      
-
-
-
-
       iconDelete.appendChild(deleteImg)
       iconDelete.appendChild(textDelete)
 
@@ -338,13 +325,6 @@ fetch("data.json")
 
       },{once:true})
 
-      // iconEdit.addEventListener("click",function () {
-      //   const editRplyContent = document.querySelector(".edit-reply-content")
-      //   console.log(editRplyContent);
-      //   const editBox = document.createElement("li")
-      //   content.remove()
-      // })
-
       iconEdit.appendChild(editImg)
       iconEdit.appendChild(textEdit)
 
@@ -380,45 +360,9 @@ fetch("data.json")
   
     replyA.appendChild(content)
     repliesA.appendChild(replyA)
-    // addReplyBox.after(repliesA)
     comment1.appendChild(repliesA)
-    // comments.appendChild(comment1)
 
     addReplyBox.remove()
-
-      //     //モーダル
-
-      // const modal = document.getElementById('easyModal');
-      // const buttonClose = document.getElementsByClassName('modalClose')[0];
-      // const modalDeleteBtn = document.querySelector(".delete")
-
-      // // Deleteボタンがクリックされた時
-      // iconDeleteBtn.addEventListener('click', modalOpen);
-      // function modalOpen() {
-      //   modal.style.display = 'block';
-      //   console.log("paku");
-      // }
-
-      // // モーダルコンテンツ以外がクリックされた時
-      // addEventListener('click', outsideClose);
-      // function outsideClose(e) {
-      //   if (e.target == modal) {
-      //     modal.style.display = 'none';
-      //   }
-      // }
-
-      // // NO,CANCELがクリックされた時
-      // buttonClose.addEventListener('click', modalClose);
-      // function modalClose() {
-      //   modal.style.display = 'none';
-      // }
-
-      // modalDeleteBtn.addEventListener("click",function () {
-      //   content.remove()
-      //   modal.style.display = 'none';
-
-        
-      // })
 
   })
 
@@ -513,7 +457,8 @@ fetch("data.json")
       //スコアボタン
       const scorenun = document.createElement("div")
       scorenun.className = "scorenun"
-      scorenun.textContent = 0 //データは仮
+      scorenun.textContent = 0
+      scorenun.value = 0 //データは仮
   
       const score = document.createElement("div")
       score.className = "score"
@@ -539,6 +484,21 @@ fetch("data.json")
       score.appendChild(plusbutton)
       score.appendChild(scorenun)
       score.appendChild(minusbutton)
+
+      plusbutton.addEventListener("click", function () {
+        if (scorenun.textContent < scorenun.value + 1) {
+          scorenun.textContent++;
+        }
+      });
+  
+      minusbutton.addEventListener("click", function () {
+        if (scorenun.textContent > scorenun.value -1) {
+          scorenun.textContent--;
+        }
+  
+      })
+
+
   
   
       //　user-headline
@@ -621,12 +581,9 @@ fetch("data.json")
         iconDelete.appendChild(textDelete)
 
         iconDelete.addEventListener('click', e=> {})
-        // console.log(e);
-        // const li = e.target.closest('li')
-        // console.log(li);
 
-                //     //モーダル
 
+        //モーダル
 
         const buttonClose = document.getElementsByClassName('modalClose')[0];
         const modalDeleteBtn = document.querySelector(".delete")
@@ -653,9 +610,6 @@ fetch("data.json")
         }
 
         modalDeleteBtn.addEventListener('click', e=> {
-          // const li = e.target.closest('li')
-          // li.remove()
-          // modal.style.display = 'none';
           content.remove()
           modal.style.display = 'none';
           addReplyBox2.remove()
@@ -757,11 +711,7 @@ fetch("data.json")
 
     })
 
-    //Maxへのリプライを編集
-
-
-
-
+ 
     //----------------------------------------------------------
 
     // replies > reply1
@@ -859,7 +809,8 @@ fetch("data.json")
       //スコアボタン
       const scorenun = document.createElement("div")
       scorenun.className = "scorenun"
-      scorenun.textContent = 0 //データは仮
+      scorenun.textContent = 0
+      scorenun.value = 0 //データは仮
   
       const score = document.createElement("div")
       score.className = "score"
@@ -886,6 +837,18 @@ fetch("data.json")
       score.appendChild(scorenun)
       score.appendChild(minusbutton)
   
+      plusbutton.addEventListener("click", function () {
+        if (scorenun.textContent < scorenun.value + 1) {
+          scorenun.textContent++;
+        }
+      });
+  
+      minusbutton.addEventListener("click", function () {
+        if (scorenun.textContent > scorenun.value -1) {
+          scorenun.textContent--;
+        }
+  
+      })
   
       //　user-headline
   
@@ -967,12 +930,9 @@ fetch("data.json")
         iconDelete.appendChild(textDelete)
 
         iconDelete.addEventListener('click', e=> {})
-        // console.log(e);
-        // const li = e.target.closest('li')
-        // console.log(li);
+
 
         //モーダル
-
 
         const buttonClose = document.getElementsByClassName('modalClose')[0];
         const modalDeleteBtn = document.querySelector(".delete")
@@ -1102,12 +1062,6 @@ fetch("data.json")
 
       addReplyBox3.remove()
 
-      
-
-
-
-
-  
     })
 
     //-------------------------------------------------------------
@@ -1156,10 +1110,6 @@ fetch("data.json")
 
         //モーダル
 
-
-        // const buttonClose = document.getElementsByClassName('modalClose')[0];
-        // const modalDeleteBtn = document.querySelector(".delete")
-
         const iconDelete = document.querySelector(".delete-edit-icon .icon-delete")
 
         // Deleteボタンがクリックされた時
@@ -1184,9 +1134,6 @@ fetch("data.json")
         }
 
         modalDeleteBtn.addEventListener('click', e=> {
-          // const li = e.target.closest('li')
-          // li.remove()
-          // contentmodal.style.display = 'none';
 
           const li = iconDelete.closest("li")
           li.remove()
@@ -1234,73 +1181,6 @@ fetch("data.json")
         },{once:true})
 
 
-  //-----------------------------------------------------------------
-
-  //リプライ編集
-
-  // const editBtn = document.querySelector("#comment2 > ul > li.edit-reply-content > div.delete-edit-icon > .button")
-  // editBtn.addEventListener("click", function() {
-  //   console.log("hakupaku");
-  // //   // const updateBtn = document.createElement("button")
-  // //   // updateBtn.className = "update-button"
-
-  // //   // const editRplyContent = document.querySelector("#comment2 > ul > li.edit-reply-content")
-  // //   // editRplyContent.className = "edit-reply-content"
-
-  // //   // editRplyContent.appendChild(updateBtn)
-  // //   // const replies = document.querySelector("#comment2 > ul")
-
-  // //   // replies.appendChild(editRplyContent)
-
-    
-
-    
-
-
-  // // })
-
-  //  const iconEditBtn = document.querySelector("#comment2 > ul > li.edit-reply-content > div.delete-edit-icon > button:nth-child(2)")
-  //  iconEditBtn.addEventListener("click",function () {
-  //   updateBtn.classList.toggle("hide")
-  //   textJ.remove()
-  //   const editTextarea = document.createElement("textarea")
-  //   editTextarea.className ="edit-textarea"
-  //   editTextarea.textContent = textJ.textContent
-    
-  //   const editRplyContent = document.querySelector("#comment2 > ul > li.edit-reply-content")
-  //   editRplyContent.appendChild(editTextarea)
-
-
-
-
-
-  //  })
- 
-    
-  // // }) 
-
-
-
-  //-----------------------------------------------------------------
-
-  //自分のリプライをupdateする
-
-  // const updateBtn = document.querySelector(".update-button")
-  // const myComment = document.querySelector("#comment2 > ul > li.edit-reply-content > textarea")
-
-  // updateBtn.addEventListener("click",function() {
-    
-  //   const newText = document.createElement("div")
-  //   newText.textContent = myComment.value
-
-  //   updateBtn.remove()
-
-
-
-  // })
-
-  
-
   // コメント追加ボックス
 
   avatars2 = document.createElement("img");
@@ -1331,13 +1211,6 @@ fetch("data.json")
 
 //----------------------------------------------------------
 
-// 投稿されたボックス
-// const scorenun = document.createElement("div");
-
-
-
-
-
 // SENDボタン押下でコメント投稿
 
   addCommentButton.addEventListener("click",function () {
@@ -1348,7 +1221,8 @@ fetch("data.json")
     //スコアボタン
     const scorenun = document.createElement("div")
     scorenun.className = "scorenun"
-    scorenun.textContent = 0 //データは仮
+    scorenun.textContent = 0
+    scorenun.value = 0 //データは仮
 
     const score = document.createElement("div")
     score.className = "score"
@@ -1375,6 +1249,18 @@ fetch("data.json")
     score.appendChild(scorenun)
     score.appendChild(minusbutton)
 
+    plusbutton.addEventListener("click", function () {
+      if (scorenun.textContent < scorenun.value + 1) {
+        scorenun.textContent++;
+      }
+    });
+
+    minusbutton.addEventListener("click", function () {
+      if (scorenun.textContent > scorenun.value -1) {
+        scorenun.textContent--;
+      }
+
+    })
 
     //　user-headline
 
@@ -1455,42 +1341,42 @@ fetch("data.json")
       iconDelete.appendChild(deleteImg)
       iconDelete.appendChild(textDelete)
 
-                      //     //モーダル
 
+      //     //モーダル
 
-                      const buttonClose = document.getElementsByClassName('modalClose')[0];
-                      const modalDeleteBtn = document.querySelector(".delete")
-              
-                      // Deleteボタンがクリックされた時
-                      iconDelete.addEventListener('click', modalOpen);
-                      function modalOpen() {
-                        modal.style.display = 'block';
-                        console.log("paku");
-                      }
-              
-                      // モーダルコンテンツ以外がクリックされた時
-                      addEventListener('click', outsideClose);
-                      function outsideClose(e) {
-                        if (e.target == modal) {
-                          modal.style.display = 'none';
-                        }
-                      }
-              
-                      // NO,CANCELがクリックされた時
-                      buttonClose.addEventListener('click', modalClose);
-                      function modalClose() {
-                        modal.style.display = 'none';
-                      }
-              
-                      modalDeleteBtn.addEventListener('click', e=> {
-                        // const li = e.target.closest('li')
-                        // li.remove()
-                        // modal.style.display = 'none';
-                        content.remove()
-                        modal.style.display = 'none';
-              
-                        
-                      })
+      const buttonClose = document.getElementsByClassName('modalClose')[0];
+      const modalDeleteBtn = document.querySelector(".delete")
+
+      // Deleteボタンがクリックされた時
+      iconDelete.addEventListener('click', modalOpen);
+      function modalOpen() {
+        modal.style.display = 'block';
+        console.log("paku");
+      }
+
+      // モーダルコンテンツ以外がクリックされた時
+      addEventListener('click', outsideClose);
+      function outsideClose(e) {
+        if (e.target == modal) {
+          modal.style.display = 'none';
+        }
+      }
+
+      // NO,CANCELがクリックされた時
+      buttonClose.addEventListener('click', modalClose);
+      function modalClose() {
+        modal.style.display = 'none';
+      }
+
+      modalDeleteBtn.addEventListener('click', e=> {
+        // const li = e.target.closest('li')
+        // li.remove()
+        // modal.style.display = 'none';
+        content.remove()
+        modal.style.display = 'none';
+
+        
+      })
 
       const iconDeleteBtn = document.createElement("button")
       
@@ -1538,6 +1424,16 @@ fetch("data.json")
         p.parentElement.appendChild(updateBtn)
         p.remove()
 
+        //update-buttonで編集確定
+        updateBtn.addEventListener("click", function () {
+          updateBtn.remove()
+          const newText = document.createElement("p")
+          newText.className = "text"
+          newText.innerHTML = ta.value
+          ta.replaceWith(newText)
+          
+        })                
+
       },{once:true})
       //---------------------------------------
 
@@ -1575,46 +1471,12 @@ fetch("data.json")
 
 
 
+    })
+
   })
 
-  
 
-  //-------------------------------------------------
+  // .catch((err) => {
+  //   // Do something for an error here
+  // })
 
-//モーダル
-
-// const iconDeleteBtn = document.querySelector("#comment2 > ul > li.edit-reply-content > div.delete-edit-icon > button:nth-child(1) > div")
-// const modal = document.getElementById('easyModal');
-// const buttonClose = document.getElementsByClassName('modalClose')[0];
-// const modalDeleteBtn = document.querySelector(".delete")
-
-//------------------------------------------------------
-
-
-
-
-
-
-})
-
-
-  .catch((err) => {
-    // Do something for an error here
-  });
-
-
-
-
-// function createComment(comment) {
-
-//     const li = document.createElement("li")
-//     const div = document.createElement("div")
-//     div.className = "content"
-//     const score = document.createElement("div")
-//     score.textContent = comment.score
-//     div.appendChild(score)
-//     li.appendChild(div)
-//     // ....
-
-//     return li;
-// }
