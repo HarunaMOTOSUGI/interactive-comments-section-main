@@ -31,12 +31,12 @@
     <main>
       <ul id="comments">
         <li id="comment">
-          <li id="commentContent"></li>
-          <li id="reply"></li>
+          <ul class="replies">
+            <li class="reply"></li>
+          </ul>
         </li>
       </ul>
 
-      <section id="add-comment3"></section>
 
 
       <div id="easyModal" class="modal">
@@ -60,7 +60,7 @@
       <!-- template -->
       <template id="comment-template">
             
-        <li class="content">
+        <div class="content">
           <div class="score">
             <button class="plusBtn">
               <img src="images/icon-plus.svg" alt="plus" />
@@ -138,14 +138,14 @@
           </div>
           <p class="edit-textarea text" ></p>
 
-          <!-- <div class="update-button">
+          <div class="update-button-box">
             <button class="button">UPDATE</button>
-          </div> -->
+          </div>
         </li>
       </template>
 
       <template id="add-template">
-          <div class="add-comment1">
+          <div class="add-comment">
             <img
               src=""
               alt=""
@@ -219,7 +219,7 @@
     </template>
 
     <template id="addComment">
-      <section class="add-comment3">
+      <section class="add-comment">
         <img
           src=""
           alt="juliusomo"
