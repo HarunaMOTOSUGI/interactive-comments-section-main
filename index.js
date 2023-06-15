@@ -5,19 +5,12 @@ getFileData("data.json").then(data => {
 
   const currentUser = data.currentUser
   addComment(currentUser);
+  // processReply(currentUser);
 
 
   for (const comment of data.comments) {
-    processComment(comment);
-    processAddReply(currentUser);
+    processComment(comment,currentUser);
+
   }
-
-
-
-
-
-
-  // const currentUser = data.currentUser
-  // addNewReply(currentUser)
 
 });
