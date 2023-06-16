@@ -306,12 +306,6 @@ fetch("data.json")
         updateBtn.appendChild(update)
 
 
-
-
-        p.parentElement.appendChild(updateBtn)
-        updateBtn.classList.toggle("hide")
-        p.remove()
-
         //update-buttonで編集確定
         updateBtn.addEventListener("click", function () {
           updateBtn.remove()
