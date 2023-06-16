@@ -204,7 +204,7 @@ section.add-comment {
   margin: 0 0 0 0.5rem;
 }
 
-.update-button {
+.update-button-box {
   display: flex;
   flex-direction: row-reverse;
   margin-left: auto;

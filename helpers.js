@@ -37,6 +37,10 @@ export function processComment(comment, currentUser) {
 
   const li = document.createElement("li");
   li.classList.add("comment");
+  const ul_replies = document.createElement("ul")
+
+    //  const li = document.getElementById("comment")
+
 
   const contentClone = createCommentContent(
     comment.score,
@@ -47,25 +51,48 @@ export function processComment(comment, currentUser) {
     comment.user.username === "juliusomo"
   );
 
-  addScoreFunctionality(contentClone, comment.score);
 
   // cloneを追加する
   li.appendChild(contentClone);
 
+  ul.appendChild(li)
+
+  addScoreFunctionality(contentClone, comment.score);
+
   addReplyFunctionality(contentClone, currentUser, li);
 
-  const ul_replies = document.createElement("ul");
-  ul_replies.classList.add("replies");
+  // const ul_replies = document.createElement("ul");
+  // ul_replies.classList.add("replies");
 
-  li.appendChild(ul_replies);
+    // const ul_replies =document.getElementById("replies")
+    // li.appendChild(ul_replies)
+
 
   for (const reply of comment.replies) {
-    processReply(reply);
+    processReply(reply,ul_replies);
+
+    // console.log("reply",reply);
+
+
+
+  ul_replies.classList.add("replies")
+  li.appendChild(ul_replies)
+
+  
+
   }
 
+
+
+  // li.appendChild(ul_replies);
+
+
+
   // ul_replies.appendChild(li_reply)
-  ul.appendChild(li);
+  // ul.appendChild(li);
 }
+
+
 
 function addReplyFunctionality(contentClone, currentUser, li) {
   const replyButton = contentClone.querySelector(".icon-reply");
@@ -97,9 +124,9 @@ function addCommentFunctionality(clone, currentUser) {
   const sendButton = clone.querySelector(".button");
   console.log(sendButton);
 
-  sendButton.onclick = (e) => {
+  sendButton.onclick = () => {
     console.log("clicked");
-    console.log(clone.querySelector("textarea"));
+    // console.log(clone.querySelector("textarea"));
 
     const commentData = createCommentContent(
       0,
@@ -187,6 +214,7 @@ function createEditDelete() {
     // textareaを作る
     const ta = document.createElement("textarea");
     ta.classList.add("text");
+    ta.setAttribute("id","text")
 
     // textareaにtextを入れる
     ta.value = text;
@@ -202,7 +230,7 @@ function createEditDelete() {
     const update_div = document.createElement("div");
     update_div.classList.add("update-button-box");
     const update_button = document.createElement("button");
-    update_button.classList.add("update-button");
+    update_button.classList.add("button");
     update_button.setAttribute("id", "udbtn");
     update_button.textContent = "UPDATE";
 
@@ -215,8 +243,10 @@ function createEditDelete() {
 
     // updateFunctionality(updateButton)
     const tmp = document.getElementById("udbtn");
-    tmp.onclick = () => {
-      console.log("クリックされました");
+    tmp.onclick = (e) => {
+
+      // newText.remove();
+      update_button.remove();
     };
   };
 
@@ -235,12 +265,8 @@ function createEditDelete() {
 
 // }
 
-function editReply() {
-  // コメントを消す
-  console.log("edit");
-}
 
-export function processReply(comment) {
+export function processReply(comment,ul_replies) {
   const clone = createCommentContent(
     comment.score,
     comment.user.username,
@@ -249,10 +275,27 @@ export function processReply(comment) {
     comment.content,
     comment.user.username === "juliusomo"
   );
-
-  const li_reply = document.querySelector("li");
-  li_reply.classList.add("reply");
+  const li_reply = document.createElement("li")
+  li_reply.classList.add("reply")
+  // console.log(li_reply);
+  // li_reply.classList.add("reply");
   li_reply.appendChild(clone);
+  ul_replies.appendChild(li_reply)
+
+
+  
+
+  // ul_replies.appendChild(li_reply)
+  // ul.appendChild(li);
+  // // const li_reply = document.getElementById("reply")
+  // // // console.log(li_reply);
+  // // li_reply.classList.add("reply");
+  // // li_reply.appendChild(clone);
+
+  // ul_replies.appendChild(li_reply)
+  // ul.appendChild(li);
+
+
 
   // cloneを追加する
   // const li_reply = document.querySelector("li")
@@ -296,44 +339,6 @@ function outsideClose(e) {
   }
 }
 
-// function processAddReply() {
-//   const comment = document
-//     .getElementById("comment-template")
-//     .content.cloneNode(true);
-//   comment.querySelector(".icon-reply").onclick = (e) => {
-
-//   }
-// }
-
-// function addReply() {
-//   const comment = document
-//     .getElementById("comment-template")
-//     .content.cloneNode(true);
-
-//   return comment;
-// }
-
-// function addReply(src,textarea,button) {
-//   const template = document.getElementById("add-template")
-
-//   const clone = template.content.cloneNode(true);
-
-//   clone.querySelector("img.avatars2").src = src;
-//   clone.querySelector("textarea") = textarea;
-//   clone.querySelector("button") = button;
-
-//   return clone;
-
-// }
-
-// editDelete.querySelector(".icon-delete").onclick = (e) => {
-//   const modal = openModal();
-//   modal.querySelector(".delete").onclick = () => {
-//     e.target.closest("li").remove();
-//     closeModal();
-//   };
-//   modal.querySelector(".modalClose").onclick = closeModal;
-// };
 
 function createAddComment(src) {
   const template = document.getElementById("addComment");
@@ -356,6 +361,8 @@ export function addComment(currentUser) {
     .getElementById("comments")
     .insertAdjacentElement("afterend", clone.firstElementChild);
 }
+
+
 
 // export function createNewReply() {
 //   const reply = document
@@ -388,6 +395,7 @@ export function processAddReply(currentUser) {
     template.appendChild(clone);
   };
   // document.getElementById("comment").appendChild(clone)
+  addScoreFunctionality(clone, score)
 }
 
 // function createNewReply(score, username, src, date, text) {
