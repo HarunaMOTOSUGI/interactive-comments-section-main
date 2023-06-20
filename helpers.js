@@ -197,10 +197,25 @@ function createEditDelete() {
 
   editDelete.querySelector(".icon-edit").onclick = (e) => {
     const existingTextarea = e.target.closest("li").querySelector("textarea");
+
+    // if (existingTextarea) {
+    //   e.disabled = true;
+    //   return;
+    //   }
+
+    // const p_text = e.target.closest(".content").querySelector("p.text");
+    // const text = p_text.textContent;
     if (existingTextarea) {
-      e.disabled = true;
+      // e.disabled = true;
+      // return;
+      const oldtextbox = document.createElement("p")
+      oldtextbox.classList.add(".text")
+      oldtextbox.textContent = 
+      // existingTextarea.innerHTML = text
+      existingTextarea.replaceWith(oldtextbox);
       return;
-    }
+      }
+
 
     const editTemplate = document
       .getElementById("edit-reply-template")
@@ -221,8 +236,11 @@ function createEditDelete() {
     ta.value = text;
 
     // p.textをtextareaに置き換える
-    p_text.parentElement.appendChild(ta);
+    p_text.parentElement.appendChild(ta);    
     p_text.remove();
+
+    // console.log(e.target.closest("li").querySelector("textarea"));
+
 
     //UPDATEボタン作成
     const updateButton = editTemplate.querySelector(".button");
@@ -255,6 +273,11 @@ function createEditDelete() {
  
       update_button.remove();
     };
+
+
+
+      
+    
   };
 
   return editDelete;
