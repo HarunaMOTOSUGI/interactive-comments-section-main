@@ -59,7 +59,7 @@ export function processComment(comment, currentUser) {
 
   addScoreFunctionality(contentClone, comment.score);
 
-  addReplyFunctionality(contentClone, currentUser, li,ul_replies,li);
+  addReplyFunctionality(contentClone, currentUser, li,ul_replies);
 
   
 
@@ -174,7 +174,8 @@ function addNewReply(li_reply, replyClone, currentUser) {
     const ul_rtr = document.createElement("ul");
     ul_rtr.classList.add("replies")
     ul_rtr.appendChild(li);
-    e.target.closest(".reply").appendChild(ul_rtr);
+    // console.log(e.target.closest(".li"));
+    e.target.closest("li").appendChild(ul_rtr);
     // console.log(e.target.closest(".reply"));
     replyClone.remove();
   };
