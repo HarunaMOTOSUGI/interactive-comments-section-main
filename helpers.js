@@ -1,7 +1,7 @@
-export async function getFileData(path) {
+export async function getFileData() {
   /* https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function */
-  const response = await fetch(path);
-  return await response.json();
+  const response = await fetch("data.json");
+  return response.json();
 }
 
 function createCommentContent(score, username, src, date, text, isCurrentUser) {
@@ -124,9 +124,15 @@ function addCommentFunctionality(clone, currentUser,templateClone) {
   const sendButton = clone.querySelector(".button");
   // console.log(sendButton);
 
+
   sendButton.onclick = (e) => {
     // console.log("clicked");
+    if(e.target.previousElementSibling.value===""){
+      e.disabled = true;
 
+      return; 
+    }
+  
 
     console.log(e.target.previousElementSibling.value);
 
@@ -149,12 +155,22 @@ function addCommentFunctionality(clone, currentUser,templateClone) {
     li.appendChild(commentData);
     ul.appendChild(li);
     // console.log(li);
+    e.target.previousElementSibling.value=""
+
+
   };
 }
 
 function addNewReply(li_reply, replyClone, currentUser) {
   const replyButton = replyClone.querySelector("button");
   replyButton.onclick = (e) => {
+
+    if(e.target.previousElementSibling.value===""){
+      e.disabled = true;
+
+      return; 
+    }
+
     const div_content = createCommentContent(
       0,
       currentUser.username,
@@ -197,24 +213,31 @@ function createEditDelete() {
 
   editDelete.querySelector(".icon-edit").onclick = (e) => {
     const existingTextarea = e.target.closest("li").querySelector("textarea");
+    // const p_text = e.target.closest("li").querySelector("p.text");
+    // p_text.classList.add("hide")
 
     // if (existingTextarea) {
-    //   e.disabled = true;
+    //   // e.disabled = true;
+    //   existingTextarea.classList.add("hide")
+    //   p_text.classList.remove("hide")
     //   return;
     //   }
+    //   else{
+    //     console.log("ojiichan");
+    //   }
 
-    // const p_text = e.target.closest(".content").querySelector("p.text");
-    // const text = p_text.textContent;
-    if (existingTextarea) {
-      // e.disabled = true;
-      // return;
-      const oldtextbox = document.createElement("p")
-      oldtextbox.classList.add(".text")
-      oldtextbox.textContent = 
-      // existingTextarea.innerHTML = text
-      existingTextarea.replaceWith(oldtextbox);
-      return;
-      }
+    // // const p_text = e.target.closest(".content").querySelector("p.text");
+    // // const text = p_text.textContent;
+    // if (existingTextarea) {
+    //   // e.disabled = true;
+    //   // return;
+    //   const oldtextbox = document.createElement("p")
+    //   oldtextbox.classList.add(".text")
+    //   oldtextbox.textContent = 
+    //   // existingTextarea.innerHTML = text
+    //   existingTextarea.replaceWith(oldtextbox);
+    //   return;
+    //   }
 
 
     const editTemplate = document
@@ -223,6 +246,7 @@ function createEditDelete() {
 
     // 近くのt.textを取得する
     const p_text = e.target.closest("li").querySelector("p.text");
+    // p_text.classList.add("hide")
 
     // textコンテンツを取得する
     const text = p_text.textContent;
@@ -236,10 +260,28 @@ function createEditDelete() {
     ta.value = text;
 
     // p.textをtextareaに置き換える
-    p_text.parentElement.appendChild(ta);    
-    p_text.remove();
+    p_text.parentElement.appendChild(ta);
+    // p_text.style.display="none"
 
-    // console.log(e.target.closest("li").querySelector("textarea"));
+    // const existingTa = e.target.closest("li").querySelector("textarea");
+    // existingTa.classList.add("hide")
+
+
+    if(p_text.style.display=="none"){
+      console.log("marron");
+      // p_text.classList.add("hide");
+      // ta.classList.remove("hide")
+      ta.style.display="none"
+      // existingTa.classList.remove("hide")
+    }
+    
+    else{
+      console.log("haku");
+      p_text.style.display="none"
+      // p_text.classList.remove("hide")
+      // ta.classList.add("hide")
+    }
+
 
 
     //UPDATEボタン作成
@@ -273,11 +315,6 @@ function createEditDelete() {
  
       update_button.remove();
     };
-
-
-
-      
-    
   };
 
   return editDelete;

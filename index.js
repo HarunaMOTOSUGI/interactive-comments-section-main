@@ -1,6 +1,6 @@
 import { getFileData,processComment,processReply,addComment,processAddReply } from "./helpers.js";
 
-getFileData("data.json").then(data => {
+await getFileData().then(data => {
 
 
   const currentUser = data.currentUser
@@ -14,3 +14,26 @@ getFileData("data.json").then(data => {
   }
 
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const username = "motosugi";
+function hello(name) {
+  console.log("hello "+ name + username);
+}
+console.log(username); // motosugi ERROR
+// hello('beki') // hello bekimotosugi
