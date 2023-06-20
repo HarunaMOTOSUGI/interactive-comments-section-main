@@ -134,7 +134,7 @@ function addCommentFunctionality(clone, currentUser,templateClone) {
       0,
       currentUser.username,
       currentUser.image.webp,
-      date().textContent,
+      date(/**/).textContent,
       // templateClone.querySelector("textarea").value,
       e.target.previousElementSibling.value,
       true
@@ -321,6 +321,7 @@ function createAddComment(src) {
 
 export function addComment(currentUser) {
   const template = document.getElementById("addComment");
+  // template.classList.add("add-comment")
   const templateClone = template.content.cloneNode(true).firstElementChild;
   console.log(templateClone);
   
@@ -334,6 +335,7 @@ export function addComment(currentUser) {
 
 function createAddReply(src) {
   const template = document.getElementById("add-template");
+  // template.classList.add("add-comment")
   const clone = template.content.cloneNode(true).firstElementChild;
 
   clone.querySelector("img.avatars2").src = src;
@@ -355,7 +357,10 @@ export function processAddReply(currentUser) {
 }
 
 function date() {
-  const date = document.querySelector(".date");
+  const template = document.getElementById("reply-template")
+  const clone = template.content.cloneNode(true).firstElementChild;
+  const dateBox = clone.querySelector(".date")
+  console.log(dateBox);
   // date.classList.add("date")
 
   const timeAgo = (date) => {
@@ -390,7 +395,7 @@ function date() {
 
     return Math.floor(seconds) + " seconds ago";
   };
-  date.textContent = timeAgo(new Date());
+  dateBox.textContent = timeAgo(new Date());
 
-  return date;
+  return dateBox;
 }
