@@ -5,7 +5,7 @@ export async function getFileData() {
 }
 
 function createCommentContent(score, username, src, date, text, isCurrentUser) {
-  const template = document.getElementById("comment-template");
+  const template = document.getElementById("content-template");
 
   // https://developer.mozilla.org/en-US/docs/Web/API/Node/cloneNode
   const clone = template.content.cloneNode(true).firstElementChild;
@@ -82,7 +82,7 @@ function addReplyFunctionality(contentClone, currentUser, li, li_reply) {
   const replyButton = contentClone.querySelector(".icon-reply");
   if (!replyButton) return;
   replyButton.onclick = () => {
-    const existingReply = li.querySelector(".add-comment");
+    const existingReply = li.querySelector(".form");
     if (existingReply) {
       existingReply.remove();
       return;
@@ -183,7 +183,7 @@ function addNewReply(li_reply, replyClone, currentUser) {
 
 function createEditDelete() {
   const editDelete = document
-    .getElementById("edit-delete-template")
+    .getElementById("edit-delete-button-template")
     .content.cloneNode(true).firstElementChild;
   editDelete.querySelector(".icon-delete").onclick = (e) => {
     const modal = openModal();
@@ -464,7 +464,7 @@ function outsideClose(e) {
 }
 
 function createAddComment(src) {
-  const template = document.getElementById("addComment");
+  const template = document.getElementById("comment-form");
   const templateClone = template.content.cloneNode(true);
 
   templateClone.querySelector("img.avatars2").src = src;
@@ -478,7 +478,7 @@ function createAddComment(src) {
 }
 
 export function addComment(currentUser) {
-  const template = document.getElementById("addComment");
+  const template = document.getElementById("comment-form");
   // template.classList.add("add-comment")
   const templateClone = template.content.cloneNode(true).firstElementChild;
   console.log(templateClone);
@@ -491,7 +491,7 @@ export function addComment(currentUser) {
 }
 
 function createAddReply(src) {
-  const template = document.getElementById("add-template");
+  const template = document.getElementById("reply-form-template");
   // template.classList.add("add-comment")
   const clone = template.content.cloneNode(true).firstElementChild;
 
@@ -514,7 +514,7 @@ export function processAddReply(currentUser) {
 }
 
 function date() {
-  const template = document.getElementById("reply-template");
+  const template = document.getElementById("reply-content-template");
   const clone = template.content.cloneNode(true).firstElementChild;
   const dateBox = clone.querySelector(".date");
   console.log(dateBox);
