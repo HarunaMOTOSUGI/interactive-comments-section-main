@@ -116,8 +116,6 @@ function addCommentFunctionality(clone, currentUser, templateClone) {
       return;
     }
 
-    console.log(e.target.previousElementSibling.value);
-
     const commentData = createCommentContent(
       0,
       currentUser.username,
@@ -130,11 +128,18 @@ function addCommentFunctionality(clone, currentUser, templateClone) {
 
     addScoreFunctionality(commentData, 0); //0手打ち
 
+
+    const ta = document.createElement("textarea")
+    ta.classList.add("text")
+    ta.value = e.target.previousElementSibling.value
+    ta.classList.add("hide")
+
     const ul = document.getElementById("comments");
 
     const li = document.createElement("li");
     li.classList.add("comment");
     li.appendChild(commentData);
+    commentData.appendChild(ta)
     ul.appendChild(li);
     // console.log(li);
     e.target.previousElementSibling.value = "";
@@ -189,6 +194,8 @@ function createEditDelete() {
     modal.querySelector(".modalClose").onclick = closeModal;
   };
 
+
+
   editDelete.querySelector(".icon-edit").onclick = (e) => {
 
 
@@ -219,15 +226,16 @@ function createEditDelete() {
     // p_text.classList.add("hide")
     // 近くのt.textを取得する
     const p_text = e.target.closest("li").querySelector("p.text");
+    const ta = e.target.closest("li").querySelector("textarea")
 
-    if (existingTextarea) {
-      p_text.textContent = existingTextarea.value;
-      p_text.style.display = "block"
+    // if (existingTextarea) {
+    //   p_text.textContent = existingTextarea.value;
+    //   // p_text.style.display = ""
 
-      existingTextarea.remove();
-      // existingTextarea.classList.add("hide")
-      // p_text.classList.remove("hide")
-    }
+    //   existingTextarea.remove();
+    //   // existingTextarea.classList.add("hide")
+    //   // p_text.classList.remove("hide")
+    // }
 
     const existingUdbtn = e.target.closest("li").querySelector(".button");
     if (existingUdbtn) {
@@ -246,30 +254,31 @@ function createEditDelete() {
     const text = p_text.textContent;
 
     // textareaを作る
-    const ta = document.createElement("textarea");
-    ta.classList.add("text");
-    ta.setAttribute("id", "text");
+    // const ta = document.createElement("textarea");
+    // ta.classList.add("text");
+    // ta.setAttribute("id", "text");
 
-    // textareaにtextを入れる
-    ta.value = text;
+    // // textareaにtextを入れる
+    // ta.value = text;
 
-    // p.textをtextareaに置き換える
-    p_text.parentElement.appendChild(ta);
+    // // p.textをtextareaに置き換える
+    // p_text.parentElement.appendChild(ta);
+
+
+
     // p_text.remove()
-    ta.style.display = "none";
 
-    // p_text.style.display="none"
+    // p_text.classList.toggle("hide")
+    // ta.classList.toggle("show")
 
-    // const existingTa = e.target.closest("li").querySelector("textarea");
-    // existingTa.classList.add("hide")
 
-    // if (ta.style.display==="none") {
-    //   ta.style.display=""
 
-    // }
-    // else {
-    //   ta.style.display="none"
-    // }
+
+
+    
+
+
+
 
     //UPDATEボタン作成
     const updateButton = editTemplate.querySelector(".button");
@@ -285,52 +294,118 @@ function createEditDelete() {
     update_div.appendChild(update_button);
 
     ta.insertAdjacentElement("afterend", update_div);
+    update_div.classList.add("hide")
+    
+    if (ta.classList.contains("hide")) {
+      ta.classList.remove("hide")
+      ta.value = p_text.textContent
+      p_text.classList.add("hide")
+      update_div.classList.remove("hide")
+      
+    }else{
+      ta.classList.add("hide")
+      p_text.classList.remove("hide")
+    }
 
-    const newText = ta.value;
-    const newTextBox = document.createElement("p");
+    // if (ta.style.display === "none") {
+    //   console.log("marron");
+    //   ta.style.display = ""
+    //   ta.value = p_text.textContent;
+  
+    //   p_text.style.display = "none"
+    //   // update_div.style.display = ""
+
+    // } else {
+    //   console.log("haku");
+    //   ta.style.display = "none"
+    //   p_text.style.display = ""
+    //   p_text.textContent = ta.value
+    //   // update_div.style.display = "none"
+
+    // }
+
+        // if (textArea.style.display === "none") {
+    //   // textareaが見えない状態なので、
+    //   １．見えるようにする＋valueをpタグのtextContent
+    //   ２．pタグを見えなくする
+    //   ３．UPDATEボタンも見えるようにする
+    // }else {
+    //   // textareaが見えている状態なので、
+    //   １．見えなくする
+    //   ２．pタグを見えるようにする＋p.tagのtextContentをtextareaタグのvalueにする
+    //   ３．UPDATEボタンも見えないようにする
+
+    // }
+    
+    
+    // UPDATEボタンがクリックされたら
+    //     １．p.textContent=textArea.value
+    //     ２． textareaを見えないようにする
+    //     ３．pタグを見えるようにする
+    //     ４．UPDATEボタンも見えないようにする
+    
+    // */
+
+    // const newText = ta.value;
+    // const newTextBox = document.createElement("p");
 
     // updateFunctionality(updateButton)
     const tmp = document.getElementById("udbtn");
     tmp.onclick = (e) => {
       const newText = ta.value;
-      const newTextBox = document.createElement("p");
-      newTextBox.classList.add("text");
+      // const newTextBox = document.createElement("p");
+      // newTextBox.classList.add("text");
       // e.target.parentElement.appendChild(newTextBox)
       console.log("newText", newText);
-      newTextBox.innerHTML = newText;
-      ta.replaceWith(newTextBox);
-
+      p_text.innerHTML = newText;
+      // ta.replaceWith(p_text);
+      // ta.parentElement.appendChild(p_te)
+      ta.classList.add("hide")
+      p_text.classList.remove("hide")
       e.target.closest("li").querySelector(".date").textContent =
         date().textContent;
 
-      update_button.remove();
+      update_div.remove()
       // newText.classList.remove("text");
     };
 
-    if (p_text.style.display === "") {
-      console.log("marron");
-      // p_text.classList.add("hide");
-      // ta.classList.remove("hide")
-      p_text.style.display = "none";
-      ta.style.display = "";
-      update_button.style.display = "";
-      // existingTa.classList.remove("hide")
-    } else if (newTextBox) {
-      const newTextarea = document.createElement("textarea");
-      newTextarea.classList.add("text");
-      newTextarea.innerHTML = newText;
-      console.log("newTextarea", newTextarea);
-      // console.log(e.target.closest("li"));
-      e.target.closest("li").querySelector("p").remove();
-      // e.target.closest("li").appendChild(newTextarea);
-    } else {
-      console.log("haku");
-      // p_text.classList.remove("hide")
-      // ta.classList.add("hide")
-      p_text.style.display = "";
-      ta.style.display = "none";
-      update_button.remove();
-    }
+
+
+
+    // if (ta.style.display === "none") {
+    //   console.log("marron");
+    //   // p_text.classList.add("hide");
+    //   // ta.classList.remove("hide")
+    //   p_text.style.display = "none";
+    //   ta.style.display = "";
+    //   update_button.style.display = "";
+    //   // existingTa.classList.remove("hide")
+    // } else if (newTextBox) {
+    //   const newTextarea = document.createElement("textarea");
+    //   newTextarea.classList.add("text");
+    //   newTextarea.innerHTML = newText;
+    //   console.log("newTextarea", newTextarea);
+    //   // console.log(e.target.closest("li"));
+    //   e.target.closest("li").querySelector("p").remove();
+    //   // e.target.closest("li").appendChild(newTextarea);
+    // } else {
+    //   console.log("haku");
+    //   // p_text.classList.remove("hide")
+    //   // ta.classList.add("hide")
+    //   p_text.style.display = "";
+    //   ta.style.display = "none";
+    //   update_button.remove();
+    // }
+
+
+
+
+
+
+
+
+
+
   };
 
   return editDelete;
@@ -348,12 +423,19 @@ export function processReply(comment, ul_replies, currentUser, li) {
 
   addScoreFunctionality(clone, comment.score);
 
+
   const li_reply = document.createElement("li");
   li_reply.classList.add("reply");
   li_reply.appendChild(clone);
+
   ul_replies.appendChild(li_reply);
   li.appendChild(ul_replies);
 
+  const ta = document.createElement("textarea")
+  ta.classList.add("text")
+  ta.value = li_reply.querySelector("p").textContent
+  ta.classList.add("hide")
+  clone.appendChild(ta)
   addReplyFunctionality(clone, currentUser, ul_replies);
 }
 

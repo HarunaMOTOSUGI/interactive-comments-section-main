@@ -404,7 +404,7 @@ textarea {
 }
 
 .show {
-  display: block;
+  display: "";
 }
 
 
