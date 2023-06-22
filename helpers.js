@@ -167,9 +167,18 @@ function addNewReply(li_reply, replyClone, currentUser) {
     // console.log(replyClone.querySelector("textarea").value);
     addScoreFunctionality(div_content, 0); //0手打ち？
 
+
+
     const li = document.createElement("li");
     li.classList.add("reply");
     li.appendChild(div_content);
+
+    const ta = document.createElement("textarea")
+    ta.classList.add("text")
+    ta.value = li.querySelector("p").textContent
+    ta.classList.add("hide")
+
+    div_content.appendChild(ta)
 
     const ul_rtr = document.createElement("ul");
     ul_rtr.classList.add("replies");
@@ -222,28 +231,18 @@ function createEditDelete() {
     
     */
     const existingTextarea = e.target.closest("li").querySelector("textarea");
-    // const p_text = e.target.closest("li").querySelector("p.text");
-    // p_text.classList.add("hide")
+
     // 近くのt.textを取得する
     const p_text = e.target.closest("li").querySelector("p.text");
     const ta = e.target.closest("li").querySelector("textarea")
 
-    // if (existingTextarea) {
-    //   p_text.textContent = existingTextarea.value;
-    //   // p_text.style.display = ""
 
-    //   existingTextarea.remove();
-    //   // existingTextarea.classList.add("hide")
-    //   // p_text.classList.remove("hide")
-    // }
 
     const existingUdbtn = e.target.closest("li").querySelector(".button");
     if (existingUdbtn) {
       existingUdbtn.remove();
     }
-    // if (existingTextarea) {
-    //   // e.disabled = true;
-    //   // return;
+
 
     const editTemplate = document
       .getElementById("edit-reply-template")
@@ -252,32 +251,6 @@ function createEditDelete() {
 
     // textコンテンツを取得する
     const text = p_text.textContent;
-
-    // textareaを作る
-    // const ta = document.createElement("textarea");
-    // ta.classList.add("text");
-    // ta.setAttribute("id", "text");
-
-    // // textareaにtextを入れる
-    // ta.value = text;
-
-    // // p.textをtextareaに置き換える
-    // p_text.parentElement.appendChild(ta);
-
-
-
-    // p_text.remove()
-
-    // p_text.classList.toggle("hide")
-    // ta.classList.toggle("show")
-
-
-
-
-
-    
-
-
 
 
     //UPDATEボタン作成
