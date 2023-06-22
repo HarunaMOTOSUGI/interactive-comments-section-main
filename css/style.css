@@ -4,7 +4,7 @@ html {
   font-size: 100%;
 }
 
-.comment{
+.comment {
   margin-top: 20px;
 }
 
@@ -53,13 +53,10 @@ ul {
   opacity: 0.7;
 }
 
-.icon-reply:hover {
-  opacity: 0.7;
-}
-
 .form {
   display: flex;
   flex-direction: row;
+  align-items: flex-start;
   justify-content: space-between;
   flex-grow: 1;
   background-color: hsl(0, 0%, 100%);
@@ -71,13 +68,21 @@ ul {
   column-gap: 1rem;
 }
 
+div.form {
+  margin-top: 8px;
+}
+
+section.form {
+  margin-top: 20px;
+}
+
 .content {
   display: grid;
   grid-template:
     "score user-name reply"
     "score text text"
     ". . update";
-  grid-template-columns: 6% 50% 38%; /*要見直し*/
+  grid-template-columns: 6% 50% 38%;
   gap: 1rem;
   background-color: hsl(0, 0%, 100%);
   max-width: 100%;
@@ -88,24 +93,19 @@ ul {
 }
 
 .edit-reply-content {
+  display: grid;
+  grid-template:
+    "score user-name delete-edit"
+    "score edit-textarea edit-textarea"
+    "score . update";
+  grid-template-columns: 0.5fr 9fr 5fr;
+  gap: 1rem;
   background-color: hsl(0, 0%, 100%);
   max-width: 100%;
   margin: 20px auto 0 auto;
   padding: 20px;
   border-radius: 5px;
   box-sizing: border-box;
-}
-
-.form {
-  align-items: flex-start;
-}
-
-div.form {
-  margin-top: 8px;
-}
-
-section.form {
-  margin-top: 20px;
 }
 
 .score {
@@ -125,9 +125,9 @@ section.form {
   color: hsl(238, 40%, 52%);
   font-weight: 500;
   margin: auto;
-
 }
-.plusBtn, .minusBtn {
+.plusBtn,
+.minusBtn {
   max-width: 100%;
   max-height: 100%;
 }
@@ -146,13 +146,15 @@ section.form {
   align-items: center;
 }
 
-.name, .currentUserName {
+.name,
+.currentUserName {
   overflow-wrap: break-word;
   margin: 0 10px;
   font-weight: 700;
 }
 
-.date, .currentUserDate {
+.date,
+.currentUserDate {
   margin: 0 10px;
   white-space: nowrap;
   font-weight: 400;
@@ -166,6 +168,10 @@ section.form {
   font-weight: 500;
 }
 
+.icon-reply:hover {
+  opacity: 0.7;
+}
+
 .icon-reply span {
   margin-left: 8px;
 }
@@ -175,7 +181,6 @@ section.form {
   margin-top: 8px;
   margin-bottom: auto;
   margin-left: auto;
-  /* grid-area: delete-edit; */
   font-weight: 500;
 }
 
@@ -183,10 +188,12 @@ section.form {
   margin-left: 8px;
 }
 
-.icon-edit:hover {
-  opacity: 0.7;
+.icon-edit {
+  margin-left: 16px;
+  color: hsl(238, 40%, 52%);
 }
-.icon-delete:hover {
+
+.icon-edit:hover {
   opacity: 0.7;
 }
 
@@ -195,9 +202,8 @@ section.form {
   color: hsl(358, 79%, 66%);
 }
 
-.icon-edit {
-  margin-left: 16px;
-  color: hsl(238, 40%, 52%);
+.icon-delete:hover {
+  opacity: 0.7;
 }
 
 .userText {
@@ -213,19 +219,15 @@ section.form {
   grid-area: update;
 }
 
-/* リプライの線 */
 .replies {
   margin-left: 25px;
   padding-left: 25px;
   border-left: solid 1px hsl(223, 19%, 93%);
 }
-/* ------------ */
-
 
 .reply {
   margin-top: 20px;
 }
-
 
 .score-edit1 {
   display: flex;
@@ -237,28 +239,6 @@ section.form {
   flex: 1;
   justify-content: space-between;
   max-width: 100%;
-}
-
-.edit-reply-content {
-  display: grid;
-  grid-template:
-    "score user-name delete-edit"
-    "score edit-textarea edit-textarea"
-    "score . update";
-  grid-template-columns: 0.5fr 9fr 5fr;
-  gap: 1rem;
-  background-color: hsl(0, 0%, 100%);
-  max-width: 100%;
-  margin: 20px auto 0 auto;
-  padding: 20px;
-  border-radius: 5px;
-}
-
-#editReplyText {
-  display: flex;
-  background-color: hsl(0, 0%, 100%);
-  width: 80%;
-  margin: 5% auto;
 }
 
 .user {
@@ -296,7 +276,6 @@ section.form {
 
 textarea {
   flex: 1;
-  /* width: 100%; */
   height: 100px;
   resize: none;
   border: 1px hsl(0, 0%, 0%) solid;
@@ -309,11 +288,6 @@ textarea {
   margin: 0;
   grid-area: edit-textarea;
   color: hsl(211, 10%, 45%);
-
-}
-
-.active {
-  display: block;
 }
 
 .modal {
@@ -325,7 +299,7 @@ textarea {
   height: 100%;
   width: 100%;
   overflow: auto;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .modal-content {
@@ -335,25 +309,23 @@ textarea {
   border-radius: 5px;
   padding: 30px;
   text-align: left;
-  /* box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2),0 7px 20px 0 rgba(0,0,0,0.17); */
   animation-name: modalopen;
   animation-duration: 1s;
 }
 
-.hide {
-  display: none;
-}
-
 @keyframes modalopen {
-  from {opacity: 0}
-  to {opacity: 1}
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .modal-button {
   display: grid;
   grid-template-columns: 50% 50%;
   margin-top: 5%;
-
 }
 
 .modalClose {
@@ -364,10 +336,13 @@ textarea {
   margin-right: auto;
   margin-left: 0;
   border-radius: 5px;
-  /* margin: auto; */
 }
 
-.delete{
+.modalClose:hover {
+  opacity: 0.7;
+}
+
+.delete {
   background-color: hsl(358, 79%, 66%);
   color: white;
   padding: 3%;
@@ -375,13 +350,6 @@ textarea {
   width: 95%;
   margin-left: auto;
   margin-right: 0;
-  /* margin: auto; */
-
-}
-
-
-.modalClose:hover {
-  opacity: 0.7;
 }
 
 .delete:hover {
@@ -395,21 +363,12 @@ textarea {
 }
 
 .modal-body {
-  /* padding: 10px 20px; */
   color: black;
 }
 
 .hide {
   display: none;
 }
-
-.show {
-  display: "";
-}
-
-
-/* モバイル版
------------------------------------------ */
 
 @media (max-width: 600px) {
   main {
@@ -434,11 +393,7 @@ textarea {
     width: 80px;
     height: 30px;
     margin: auto 0;
-    vertical-align:  middle;
-  }
-
-  .scorenun {
-    margin: auto;
+    vertical-align: middle;
   }
 
   .score img {
@@ -472,7 +427,7 @@ textarea {
     grid-area: comment;
   }
 
-  .active {
+  .form {
     display: grid;
     grid-template:
       "comment comment"
@@ -504,7 +459,6 @@ textarea {
   }
 
   .delete-edit-icon {
-    /* grid-area: delete-edit-icon; */
     margin: auto;
   }
 
@@ -517,11 +471,6 @@ textarea {
     margin: 0 0.5rem;
     white-space: nowrap;
   }
-
-  /* .update-button {
-    grid-area: update-button;
-  } */
-
   .button {
     grid-area: button;
     margin-left: auto;
@@ -531,6 +480,4 @@ textarea {
     margin: 20% auto;
     width: 300px;
   }
-
-  /* ----------------------------------------- */
 }
