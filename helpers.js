@@ -352,6 +352,11 @@ function createEditDelete() {
     // updateFunctionality(updateButton)
     const tmp = document.getElementById("udbtn");
     tmp.onclick = (e) => {
+      if (e.target.parentElement.previousElementSibling.value === "") {
+        e.disabled = true;
+  
+        return;
+      }
       const newText = ta.value;
       // const newTextBox = document.createElement("p");
       // newTextBox.classList.add("text");
