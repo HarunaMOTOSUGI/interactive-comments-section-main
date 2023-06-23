@@ -1,11 +1,9 @@
-import { getFileData, processComment, commentForm } from "./helpers.js";
+import { getFileData, showComment, addCommentForm } from "./helpers.js";
 
 await getFileData().then((data) => {
   const currentUser = data.currentUser;
-  commentForm(currentUser);
-  // processReply(currentUser);
-
+  addCommentForm(currentUser);
   for (const comment of data.comments) {
-    processComment(comment, currentUser);
+    showComment(comment, currentUser);
   }
 });

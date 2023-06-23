@@ -3,7 +3,7 @@ export async function getFileData() {
   return response.json();
 }
 
-export function processComment(comment, currentUser) {
+export function showComment(comment, currentUser) {
   const ul_comments = document.getElementById("comments");
   const li_comment = document.createElement("li");
   li_comment.classList.add("comment");
@@ -24,14 +24,14 @@ export function processComment(comment, currentUser) {
 
   addScoreFunctionality(contentClone, comment.score);
 
-  replyForm(contentClone, currentUser, li_comment);
+  addReplyForm(contentClone, currentUser, li_comment);
 
   for (const reply of comment.replies) {
-    processReply(reply, ul_replies, currentUser, li_comment);
+    showReply(reply, ul_replies, currentUser, li_comment);
   }
 }
 
-export function processReply(comment, ul_replies, currentUser, li) {
+export function showReply(comment, ul_replies, currentUser, li) {
   const replyClone = createCommentContent(
     comment.score,
     comment.user.username,
@@ -55,11 +55,11 @@ export function processReply(comment, ul_replies, currentUser, li) {
   ta.value = li_reply.querySelector("p").textContent;
   ta.classList.add("hide");
   replyClone.appendChild(ta);
-  replyForm(replyClone, currentUser, ul_replies);
+  addReplyForm(replyClone, currentUser, ul_replies);
 }
 
-export function commentForm(currentUser) {
-  const currentUserClone = currentUserInfoCmt(currentUser.image.webp);
+export function addCommentForm(currentUser) {
+  const currentUserClone = createCurrentUserInfoCmt(currentUser.image.webp);
   addCommentFunctionality(currentUserClone, currentUser);
   document
     .getElementById("comments")
@@ -80,7 +80,7 @@ function createCommentContent(score, username, src, date, text, isCurrentUser) {
   if (isCurrentUser) {
     clone.querySelector(".you").textContent = "you";
     const icon_reply = clone.querySelector(".icon-reply");
-    const editDelete = createEditDelete();
+    const editDelete = createEditDeleteButton();
     icon_reply.parentElement.appendChild(editDelete);
     icon_reply.remove();
   }
@@ -88,7 +88,7 @@ function createCommentContent(score, username, src, date, text, isCurrentUser) {
   return clone;
 }
 
-function replyForm(contentClone, currentUser, li) {
+function addReplyForm(contentClone, currentUser, li) {
   const replyButton = contentClone.querySelector(".icon-reply");
   if (!replyButton) return;
   replyButton.onclick = () => {
@@ -98,7 +98,7 @@ function replyForm(contentClone, currentUser, li) {
       return;
     }
 
-    const clone = CurrentUserInfoReply(currentUser.image.webp);
+    const clone = createCurrentUserInfoReply(currentUser.image.webp);
     contentClone.insertAdjacentElement("afterend", clone);
 
     addNewReplyFunctionality(clone, currentUser);
@@ -156,7 +156,6 @@ function addNewReplyFunctionality(replyClone, currentUser) {
   replyButton.onclick = (e) => {
     if (e.target.previousElementSibling.value === "") {
       e.disabled = true;
-
       return;
     }
 
@@ -190,7 +189,7 @@ function addNewReplyFunctionality(replyClone, currentUser) {
   };
 }
 
-function createEditDelete() {
+function createEditDeleteButton() {
   const editDelete = document
     .getElementById("edit-delete-button-template")
     .content.cloneNode(true).firstElementChild;
@@ -277,7 +276,7 @@ function outsideClose(e) {
   }
 }
 
-function currentUserInfoCmt(src) {
+function createCurrentUserInfoCmt(src) {
   const template = document.getElementById("comment-form");
   const templateClone = template.content.cloneNode(true);
 
@@ -286,7 +285,7 @@ function currentUserInfoCmt(src) {
   return templateClone;
 }
 
-function CurrentUserInfoReply(src) {
+function createCurrentUserInfoReply(src) {
   const template = document.getElementById("reply-form-template");
   const clone = template.content.cloneNode(true).firstElementChild;
 
