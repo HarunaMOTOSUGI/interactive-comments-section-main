@@ -22,7 +22,7 @@
       "replies": [
         {
           "id": 5,
-          "content": "lorem",
+          "content": "Nice.",
           "createdAt": "1 week ago",
           "score": 89,
           "replyingTo": "maxblagun",
@@ -31,7 +31,7 @@
               "png": "./images/avatars/image-ramsesmiron.png",
               "webp": "./images/avatars/image-ramsesmiron.webp"
             },
-            "username": "lorem"
+            "username": "ramsesmiron"
           }
         }
       ]
