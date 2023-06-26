@@ -110,15 +110,26 @@ function addScoreFunctionality(clone, score) {
   const minusButton = clone.querySelector(".minusBtn");
   const scoreTag = clone.querySelector(".scorenun");
 
-  plusButton.onclick = () => (scoreTag.textContent = score + 1);
-  minusButton.onclick = () => (scoreTag.textContent = score - 1);
+  plusButton.onclick = () => {
+    if (scoreTag.textContent < score + 1) {
+      scoreTag.textContent++;
+    }
+  }
+  minusButton.onclick = () => {
+    if (scoreTag.textContent > score - 1) {
+      scoreTag.textContent--;
+    }
+  }
+
 }
 
 function addCommentFunctionality(clone, currentUser) {
   const sendButton = clone.querySelector(".button");
 
   sendButton.onclick = (e) => {
-    if (e.target.previousElementSibling.value === "") {
+    if (e.target.previousElementSibling.value === "" ||
+      e.target.previousElementSibling.value === null ||
+      e.target.previousElementSibling.value.trim() === "") {
       e.disabled = true;
 
       return;
@@ -154,7 +165,9 @@ function addCommentFunctionality(clone, currentUser) {
 function addNewReplyFunctionality(replyClone, currentUser) {
   const replyButton = replyClone.querySelector("button");
   replyButton.onclick = (e) => {
-    if (e.target.previousElementSibling.value === "") {
+    if (e.target.previousElementSibling.value === "" ||
+      e.target.previousElementSibling.value === null ||
+      e.target.previousElementSibling.value.trim() === "") {
       e.disabled = true;
       return;
     }
